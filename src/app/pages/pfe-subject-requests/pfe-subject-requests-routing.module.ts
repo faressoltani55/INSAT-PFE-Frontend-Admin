@@ -4,7 +4,7 @@ import { PfeSubjectRequestsComponent } from './pfe-subject-requests.component';
 
 const routes: Routes = [
   {
-    path: 'requests',
+    path: '',
     component: PfeSubjectRequestsComponent,
     }
 ];

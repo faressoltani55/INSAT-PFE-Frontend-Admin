@@ -7,7 +7,7 @@ import { ReadProfessorsComponent } from './read-professors/read-professors.compo
 
 const routes: Routes = [
   {
-    path: 'professors',
+    path: '',
     component: ProfessorsComponent,
     children: [
       { path: 'read', component: ReadProfessorsComponent },
