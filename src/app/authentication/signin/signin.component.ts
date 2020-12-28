@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {SigninService} from './signin.service';
 
 @Component({
   selector: 'app-signin',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SigninComponent implements OnInit {
 
-  constructor() { }
+  showPortal = false;
+
+  constructor(private signinService: SigninService) { }
 
   ngOnInit(): void {
+  }
+
+  openAuthWindow(): void {
+    this.showPortal = true;
+
   }
 
 }
