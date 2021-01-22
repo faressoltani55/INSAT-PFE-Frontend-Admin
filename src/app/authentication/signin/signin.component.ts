@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {UserService} from '../../services/user.service';
+import {HttpClient} from '@angular/common/http';
+import {faMicrosoft} from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-signin',
@@ -7,9 +10,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SigninComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private userService: UserService,
+    private http: HttpClient,
+    ) { }
+
+  username = '';
+  password = '';
+  loading = false;
+
+  faMicrosoft = faMicrosoft;
 
   ngOnInit(): void {
+  }
+
+  login() {
+    this.loading = true;
+    console.log('login');
+    this.userService.login(this.username, this.password).subscribe(data => {
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('refresh', data.refresh);
+      this.loading = false;
+    }, error => {
+      console.log(error);
+      this.loading = false;
+    });
+
   }
 
 }

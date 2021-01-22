@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SigninComponent } from './signin/signin.component';
 import {AuthenticationRoutingModule} from './authentication-routing.module';
+import {FormsModule} from '@angular/forms';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 
 
@@ -9,7 +11,9 @@ import {AuthenticationRoutingModule} from './authentication-routing.module';
   declarations: [SigninComponent],
   imports: [
     CommonModule,
-    AuthenticationRoutingModule
+    AuthenticationRoutingModule,
+    FormsModule,
+    FontAwesomeModule
   ]
 })
 export class AuthenticationModule { }

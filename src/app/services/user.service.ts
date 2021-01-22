@@ -26,7 +26,7 @@ export class UserService {
 }
 
 class LoginResponse {
-  public access: string;
+  public token: string;
   public refresh: string;
 }
 
