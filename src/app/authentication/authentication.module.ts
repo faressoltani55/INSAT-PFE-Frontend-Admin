@@ -3,9 +3,6 @@ import {CommonModule} from '@angular/common';
 import {SigninComponent} from './signin/signin.component';
 
 import {HttpClientModule} from '@angular/common/http';
-import {AuthWindowComponent} from './auth-window/auth-window.component';
-import {AuthWindowRedirectComponent} from './auth-window-redirect/auth-window-redirect.component';
-import {AuthRoutingModule} from './auth-routing.module';
 
 
 import {AuthenticationRoutingModule} from './authentication-routing.module';
@@ -15,7 +12,7 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
-  declarations: [SigninComponent, AuthWindowComponent, AuthWindowRedirectComponent],
+  declarations: [SigninComponent],
   exports: [
     SigninComponent
   ],
@@ -25,7 +22,6 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     AuthenticationRoutingModule,
     FormsModule,
     FontAwesomeModule,
-    AuthRoutingModule
   ],
 })
 
