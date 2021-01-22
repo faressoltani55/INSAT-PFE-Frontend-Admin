@@ -10,22 +10,25 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full',
   },
-  { path: 'signin', 
-    component: SigninComponent
+  { path: 'signin',
+    component: SigninComponent,
   },
-  { path: 'home',     
-    canActivate: [AuthGuard],
+  { path: 'auth',
+    loadChildren: () => import('./authentication/authentication.module').then(mod => mod.AuthenticationModule)
+  },
+  { path: 'home',
+    canActivate: [ AuthGuard ],
     loadChildren: () => import('./pages/home/home.module').then(mod => mod.HomeModule)
   },
-  { path: 'search',     
+  { path: 'search',
     canActivate: [AuthGuard],
     loadChildren: () => import('./pages/search/search.module').then(mod => mod.SearchModule)
   },
-  { path: 'calendar',  
-    canActivate: [AuthGuard],   
+  { path: 'calendar',
+    canActivate: [AuthGuard],
     loadChildren: () => import('./pages/calendar/calendar.module').then(mod => mod.CalendarModule)
   },
-  { path: 'profile',    
+  { path: 'profile',
     canActivate: [AuthGuard],
     loadChildren: () => import('./pages/profile/profile.module').then(mod => mod.ProfileModule)
   },

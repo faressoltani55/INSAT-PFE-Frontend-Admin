@@ -1,1 +1,5 @@
-<p>signin works!</p>
+<button (click)="openAuthWindow()">Sign In</button>
+<app-auth-window *ngIf="showPortal">
+  <h2>Hello world from amother window!!</h2>
+  <button (click)="this.showPortal = false">Close me!</button>
+</app-auth-window>
