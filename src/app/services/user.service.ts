@@ -22,6 +22,10 @@ export class UserService {
     return this.http.get(Utils.baseUrl + '/admin') as Observable<Admin>;
   }
 
+  public loginWithMicrosoft(): Observable<any> {
+    return this.http.get(Utils.baseUrl + '/auth') as Observable<any>;
+  }
+
 
 }
 

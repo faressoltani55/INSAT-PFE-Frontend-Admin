@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from '../../services/user.service';
 import {HttpClient} from '@angular/common/http';
 import {faMicrosoft} from '@fortawesome/free-brands-svg-icons';
+import {Utils} from '../../utils/utils';
 
 @Component({
   selector: 'app-signin',
@@ -24,7 +25,7 @@ export class SigninComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  login() {
+  login(): void {
     this.loading = true;
     console.log('login');
     this.userService.login(this.username, this.password).subscribe(data => {
@@ -35,7 +36,13 @@ export class SigninComponent implements OnInit {
       console.log(error);
       this.loading = false;
     });
-
   }
 
+
+  loginWithMicrosoft(): void {
+    this.loading = true;
+    this.userService.loginWithMicrosoft().subscribe((data) => {
+      console.log(data);
+    });
+  }
 }
