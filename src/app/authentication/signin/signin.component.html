@@ -1,5 +1,57 @@
-<button (click)="openAuthWindow()">Sign In</button>
-<app-auth-window *ngIf="showPortal">
-  <h2>Hello world from amother window!!</h2>
-  <button (click)="this.showPortal = false">Close me!</button>
-</app-auth-window>
+<div class="login-wrap mt-5">
+  <div class="login-html">
+    <div class="text-center">
+      <p class="tab">S'authentifier</p>
+    </div>
+    <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab"></label>
+    <div class="login-form">
+      <div class="sign-in-htm">
+        <div class="group">
+          <div *ngIf="user.invalid && (user.dirty || user.touched)"
+               class="alert alert-danger">
+
+            <div *ngIf="user.errors.required">
+              Username is required.
+            </div>
+            <div *ngIf="user.errors.minlength">
+              Username must be at least 4 characters long.
+            </div>
+          </div>
+          <label for="user" class="label">Nom d'utilisateur</label>
+          <input  name="user" required minlength="3"
+                  [(ngModel)]="username" #user="ngModel" id="user" type="text" class="input form-control">
+        </div>
+        <div class="group">
+          <div *ngIf="pass.invalid && (pass.dirty || pass.touched)"
+               class="alert alert-danger">
+
+            <div *ngIf="pass.errors.required">
+              Password is required.
+            </div>
+            <div *ngIf="pass.errors.minlength">
+              Password must be at least 4 characters long.
+            </div>
+          </div>
+          <label for="pass" class="label">Mot de passe</label>
+          <input id="pass" type="password"  required minlength="3" class="input form-control" name="pass"
+                 [(ngModel)]="password" #pass="ngModel">
+        </div>
+        <div class="group">
+          <input type="submit" class="button" [disabled]="pass.invalid || user.invalid" (click)="login()" value="s'identifier">
+        </div>
+        <div class="text-center my-1" style="color: white">Ou</div>
+        <div class="group">
+
+          <a type="submit" class=" button button-microsoft text-center" target="_blank" (click)="loginWithMicrosoft()">
+            <fa-icon [icon]="faMicrosoft"></fa-icon>
+            s'identifier avec Microsoft
+          </a>
+        </div>
+        <div class="hr"></div>
+        <div class="foot-lnk">
+          <a href="#forgot">Si vous avez oubliez votre mot de passe, veuillez contacter l'administration</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
