@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {YearService} from '../services/year.service';
 import {Router} from '@angular/router';
-import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-add-year',
@@ -10,8 +9,6 @@ import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./add-year.component.css']
 })
 export class AddYearComponent implements OnInit {
-
-  dateModel: NgbDateStruct;
 
   formGroup: FormGroup;
 

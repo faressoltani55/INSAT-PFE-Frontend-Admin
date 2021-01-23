@@ -16,7 +16,6 @@ export class YearComponent implements OnInit {
   ngOnInit(): void {
     this.yearService.getYears().subscribe(
       (response: Year) => {
-        console.log(response);
         this.yearsList = response;
       }, (error: any) => {
         console.log(error);

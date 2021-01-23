@@ -25,7 +25,6 @@ const routes: Routes = [
   },
   {
     path: 'listing',
-    component: ListingsComponent,
     children : [
       {path: 'sessions', component: SessionsListingComponent},
       {path: 'soutenances', component: SoutenancesListingComponent}
