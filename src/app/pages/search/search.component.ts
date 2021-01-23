@@ -9,7 +9,12 @@ export class SearchComponent implements OnInit {
 
   constructor() { }
 
+  searchType = 1;
+
   ngOnInit(): void {
   }
 
+  setSearchType(num: number): void {
+    this.searchType = num;
+  }
 }

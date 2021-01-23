@@ -10,6 +10,7 @@ import {AuthenticationModule} from './authentication/authentication.module';
 import {FormsModule} from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+
 @NgModule({
   declarations: [
     AppComponent,
