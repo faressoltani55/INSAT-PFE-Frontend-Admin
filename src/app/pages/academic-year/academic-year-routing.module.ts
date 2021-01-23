@@ -7,11 +7,16 @@ import { AdditionsComponent } from './additions/additions.component';
 import { ListingsComponent } from './listings/listings.component';
 import { SessionsListingComponent } from './sessions-listing/sessions-listing.component';
 import { SoutenancesListingComponent } from './soutenances-listing/soutenances-listing.component';
+import {AcademicYearComponent} from './academic-year.component';
+import {YearComponent} from './year/year.component';
 
 const routes: Routes = [
   {
+    path: '',
+    component: YearComponent
+  },
+  {
     path: 'add',
-    component: AdditionsComponent,
     children: [
       {path: 'year', component: AddYearComponent},
       {path: 'session', component: AddSessionComponent},
@@ -24,7 +29,7 @@ const routes: Routes = [
     children : [
       {path: 'sessions', component: SessionsListingComponent},
       {path: 'soutenances', component: SoutenancesListingComponent}
-    ]    
+    ]
   }
 ];
 

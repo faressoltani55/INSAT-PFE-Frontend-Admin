@@ -9,21 +9,23 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import {AuthenticationModule} from './authentication/authentication.module';
 import {FormsModule} from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {PagesModule} from './pages/pages.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    FontAwesomeModule,
-  AuthenticationModule,
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        FontAwesomeModule,
+        AuthenticationModule,
+        PagesModule,
 
-],
+    ],
   providers: [
   ],
   bootstrap: [AppComponent]
