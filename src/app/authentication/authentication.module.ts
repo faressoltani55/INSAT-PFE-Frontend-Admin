@@ -8,11 +8,15 @@ import {HttpClientModule} from '@angular/common/http';
 import {AuthenticationRoutingModule} from './authentication-routing.module';
 import {FormsModule} from '@angular/forms';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import { SuccessComponent } from './success/success.component';
 
 
 
 @NgModule({
-  declarations: [SigninComponent],
+  declarations: [
+    SigninComponent,
+    SuccessComponent,
+  ],
   exports: [
     SigninComponent
   ],

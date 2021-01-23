@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AuthWindowRedirectComponent } from './auth-window-redirect.component';
+import { SuccessComponent } from './success.component';
 
-describe('AuthWindowRedirectComponent', () => {
-  let component: AuthWindowRedirectComponent;
-  let fixture: ComponentFixture<AuthWindowRedirectComponent>;
+describe('SuccessComponent', () => {
+  let component: SuccessComponent;
+  let fixture: ComponentFixture<SuccessComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AuthWindowRedirectComponent ]
+      declarations: [ SuccessComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AuthWindowRedirectComponent);
+    fixture = TestBed.createComponent(SuccessComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
