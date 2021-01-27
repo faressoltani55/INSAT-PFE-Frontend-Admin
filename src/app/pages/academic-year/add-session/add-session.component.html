@@ -1,1 +1,54 @@
-<p>add-session works!</p>
+<div class="col-md-12">
+  <div class="card card-user">
+    <div class="card-header">
+      <h5 class="card-title">Create new acedemic year</h5>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="formGroup" (ngSubmit)="submitAddSession()">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Session name</label>
+              <input type="text" class="form-control" placeholder="Name" formControlName="name">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Session start date</label>
+              <input type="datetime-local" class="form-control" placeholder="Session start date" formControlName="startDate">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label >Session end date</label>
+              <input type="datetime-local" class="form-control" placeholder="Session end date" formControlName="endDate">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Major</label>
+              <select class="form-select form-control" formControlName="major">
+                <option *ngFor="let major of majors" value="{{major._id}}">{{major.major}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label >Year</label>
+              <select class="form-select form-control" formControlName="year">
+                <option *ngFor="let year of years" value="{{year._id}}">{{year.year}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="update ml-auto mr-auto">
+            <button type="submit" class="btn btn-primary btn-round">Create</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

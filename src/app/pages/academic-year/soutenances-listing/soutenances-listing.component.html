@@ -1,1 +1,50 @@
-<p>soutenances-listing works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <h4 class="card-title">Soutenances</h4>
+              </div>
+              <div class="col">
+                  <button class="btn btn-primary" [routerLink]="['/academic-year/add/soutenance']" [queryParams]="{session: sessionId}">New soutenance</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class=" text-primary">
+              <th>
+                Date
+              </th>
+              <th>
+                Time
+              </th>
+              <th>
+                Room
+              </th>
+              </thead>
+              <tbody>
+              <tr *ngFor="let soutenance of soutenancesList">
+                <td>
+                  {{soutenance.dateTime.split('T')[0]}}
+                </td>
+                <td>
+                  {{soutenance.dateTime.split('T')[1].slice(0, 5)}}
+                </td>
+                <td>
+                  {{soutenance.room}}
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

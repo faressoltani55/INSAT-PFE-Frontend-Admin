@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Session} from '../models/session.model';
 import {YearService} from '../services/year.service';
+import {Year} from '../models/year.model';
 
 @Component({
   selector: 'app-sessions-listing',
@@ -11,6 +12,7 @@ import {YearService} from '../services/year.service';
 export class SessionsListingComponent implements OnInit {
 
   yearId: string;
+  year: Year;
   sessionsList: any[];
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -22,13 +24,19 @@ export class SessionsListingComponent implements OnInit {
       (params: any) => {
         if (params.year) {
           this.yearId = params.year;
+          this.yearService.getYearById(this.yearId).subscribe(
+            (response: any) => {
+              this.year = response;
+            }, (err: any) => {
+              console.log(err);
+            }
+          );
           this.getSessions();
         }
       }, (err: any) => {
         console.log(err);
       }
     );
-
   }
 
   getSessions(): void {

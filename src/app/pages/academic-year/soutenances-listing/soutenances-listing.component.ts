@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {YearService} from '../services/year.service';
+import {Session} from '../models/session.model';
+import {Soutenance} from '../models/soutenance.model';
 
 @Component({
   selector: 'app-soutenances-listing',
@@ -7,9 +11,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SoutenancesListingComponent implements OnInit {
 
-  constructor() { }
+  sessionId: string;
+  soutenancesList: any[];
+
+  constructor(private activatedRoute: ActivatedRoute,
+              private yearService: YearService) {
+  }
 
   ngOnInit(): void {
+    this.activatedRoute.queryParams.subscribe(
+      (params: any) => {
+        if (params.session) {
+          this.sessionId = params.session;
+          this.getSoutenances();
+        }
+      }, (err: any) => {
+        console.log(err);
+      }
+    );
+
+  }
+
+  getSoutenances(): void {
+    this.yearService.getSoutenances().subscribe(
+      (response: any[]) => {
+        this.soutenancesList = response.filter( (soutenance: Soutenance) => soutenance.session === this.sessionId );
+      }, (err: any) => {
+        console.log(err);
+      }
+    );
   }
 
 }
