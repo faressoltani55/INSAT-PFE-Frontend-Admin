@@ -1,1 +1,53 @@
-<p>sessions-listing works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <h4 class="card-title">Sessions of year {{year.year}}</h4>
+              </div>
+              <div class="col">
+                <button class="btn btn-primary" routerLink="/academic-year/add/session">New session</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class=" text-primary">
+              <th>
+                Name
+              </th>
+              <th>
+                Start date
+              </th>
+              <th>
+                End date
+              </th>
+              </thead>
+              <tbody>
+              <tr *ngFor="let session of sessionsList">
+                <td>
+                  {{session.name}}
+                </td>
+                <td>
+                  {{session.startDate.split('T')[0]}}
+                </td>
+                <td>
+                  {{session.endDate.split('T')[0]}}
+                </td>
+                <td>
+                  <button type="button" class="btn btn-primary" [routerLink]="['/academic-year/listing/soutenances']" [queryParams]="{session: session._id}">Soutenances</button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

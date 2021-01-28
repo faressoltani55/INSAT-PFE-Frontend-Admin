@@ -8,15 +8,18 @@ import { PagesComponent } from './pages.component';
 
 
 @NgModule({
-  declarations: [
-    HeaderComponent,
-    FooterComponent,
-    SidebarComponent,
-    PagesComponent,
-  ],
-  imports: [
-    CommonModule,
-    PagesRoutingModule,
-  ]
+    declarations: [
+        HeaderComponent,
+        FooterComponent,
+        SidebarComponent,
+        PagesComponent,
+    ],
+    exports: [
+        SidebarComponent
+    ],
+    imports: [
+        CommonModule,
+        PagesRoutingModule,
+    ]
 })
 export class PagesModule { }

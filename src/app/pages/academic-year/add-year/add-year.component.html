@@ -1,1 +1,50 @@
-<p>add-year works!</p>
+<div class="col-md-12">
+  <div class="card card-user">
+    <div class="card-header">
+      <h5 class="card-title">Create new acedemic year</h5>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="formGroup" (ngSubmit)="submitAddYear()">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Year label</label>
+              <input type="text" class="form-control" placeholder="2020/2021" formControlName="year">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Year start date</label>
+              <input type="datetime-local" class="form-control" placeholder="Year start date" formControlName="startDate">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label >Year end date</label>
+              <input type="datetime-local" class="form-control" placeholder="Year end date" formControlName="endDate">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Internship start date</label>
+              <input type="datetime-local" class="form-control" placeholder="Internship start date" formControlName="internshipsStartDate">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label >Internship end date</label>
+              <input type="datetime-local" class="form-control" placeholder="Internship end date" formControlName="internshipsEndDate">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="update ml-auto mr-auto">
+            <button type="submit" class="btn btn-primary btn-round">Create</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
