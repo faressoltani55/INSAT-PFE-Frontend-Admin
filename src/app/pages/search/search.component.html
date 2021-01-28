@@ -1,1 +1,126 @@
-<p>search works!</p>
+<div class="row">
+  <div class="col-lg-3 col-md-6 col-sm-6" (click)="setSearchType(1)" style="cursor: pointer">
+    <div class="card card-stats">
+      <div class="card-body ">
+        <div class="row">
+          <div class="col-4 col-md-3">
+            <div class="icon-big text-center icon-warning">
+              <i class="nc-icon nc-globe text-warning"></i>
+            </div>
+          </div>
+          <div class="col-8 col-md-9">
+            <div class="numbers">
+              <p class="card-category">Chercher</p>
+              <p class="card-title" style="font-size: 20px">Les sujets
+              <p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer ">
+        <hr>
+        <div class="stats">
+          <i class="fa fa-refresh"></i> Clickez içi
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6 col-sm-6" (click)="setSearchType(2)" style="cursor: pointer">
+    <div class="card card-stats">
+      <div class="card-body ">
+        <div class="row">
+          <div class="col-4 col-md-3">
+            <div class="icon-big text-center icon-warning">
+              <i class="nc-icon nc-money-coins text-success"></i>
+            </div>
+          </div>
+          <div class="col-8 col-md-9">
+            <div class="numbers">
+              <p class="card-category">Chercher</p>
+              <p class="card-title" style="font-size: 20px">Les professeurs
+              <p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer ">
+        <hr>
+        <div class="stats">
+          <i class="fa fa-calendar-o"></i> Clickez ici
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6 col-sm-6" (click)="setSearchType(3)" style="cursor: pointer">
+    <div class="card card-stats">
+      <div class="card-body ">
+        <div class="row">
+          <div class="col-4 col-md-3">
+            <div class="icon-big text-center icon-warning">
+              <i class="nc-icon nc-vector text-danger"></i>
+            </div>
+          </div>
+          <div class="col-8 col-md-9">
+            <div class="numbers">
+              <p class="card-category">Chercher</p>
+              <p class="card-title" style="font-size: 20px"> Les soutenances
+              <p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer ">
+        <hr>
+        <div class="stats">
+          <i class="fa fa-clock-o"></i> Clickez içi
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6 col-sm-6" (click)="setSearchType(4)" style="cursor: pointer">
+    <div class="card card-stats">
+      <div class="card-body ">
+        <div class="row">
+          <div class="col-4 col-md-3">
+            <div class="icon-big text-center icon-warning">
+              <i class="nc-icon nc-favourite-28 text-primary"></i>
+            </div>
+          </div>
+          <div class="col-8 col-md-9">
+            <div class="numbers">
+              <p class="card-category">Chercher</p>
+              <p class="card-title" style="font-size: 20px">Les etudiants
+              <p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer ">
+        <hr>
+        <div class="stats">
+          <i class="fa fa-refresh"></i> Clickez içi
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title"> Chercher</h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+
+          <app-sujets *ngIf="searchType === 1"></app-sujets>
+          <app-professors *ngIf="searchType === 2"></app-professors>
+          <app-soutenances *ngIf="searchType === 3"></app-soutenances>
+          <app-etudiants *ngIf="searchType === 4"></app-etudiants>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
