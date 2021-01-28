@@ -10,6 +10,8 @@ import {AuthenticationModule} from './authentication/authentication.module';
 import {FormsModule} from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {PagesModule} from './pages/pages.module';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -17,16 +19,18 @@ import {PagesModule} from './pages/pages.module';
     AppComponent,
     NotFoundComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        FormsModule,
-        FontAwesomeModule,
-        AuthenticationModule,
-        PagesModule,
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ToastrModule.forRoot(),
+    FormsModule,
+    FontAwesomeModule,
+    AuthenticationModule,
+    BrowserAnimationsModule,
+    PagesModule
+],
 
-    ],
   providers: [
   ],
   bootstrap: [AppComponent]
