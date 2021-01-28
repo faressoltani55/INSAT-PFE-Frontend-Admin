@@ -9,7 +9,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import {AuthenticationModule} from './authentication/authentication.module';
 import {FormsModule} from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,10 +20,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ToastrModule.forRoot(),
     FormsModule,
     FontAwesomeModule,
-  AuthenticationModule,
-
+    AuthenticationModule,
+    BrowserAnimationsModule
 ],
   providers: [
   ],

@@ -1,1 +1,61 @@
-<p>professors-listing works!</p>
+<div class="col-md-12">
+  <div class="card">
+    <div class="card-header">
+      <h4 class="card-title"> Liste des professeurs</h4>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table">
+          <thead class=" text-primary">
+          <th>
+            Nom
+          </th>
+          <th>
+            Prenom
+          </th>
+          <th>
+            Code
+          </th>
+          <th>
+            Titre
+          </th>
+          <th>
+            Departement
+          </th>
+          <th>
+            Email
+          </th>
+          <th>
+            GSM
+          </th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let professor of professors">
+              <td>
+                {{professor.lastName}}
+              </td>
+              <td>
+                {{professor.firstName}}
+              </td>
+              <td>
+                {{professor.professorId}}
+              </td>
+              <td>
+                {{professor.title}}
+              </td>
+              <td>
+                {{professor.department}}
+              </td>
+              <td>
+                {{professor.email}}
+              </td>
+              <td>
+                {{professor.phoneNumber}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ProfessorService} from "../../../services/professor.service";
 
 @Component({
   selector: 'app-professors-listing',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./professors-listing.component.css']
 })
 export class ProfessorsListingComponent implements OnInit {
+  professors = [];
 
-  constructor() { }
+  constructor(private professorService: ProfessorService) { }
 
   ngOnInit(): void {
+    this.getProfessors();
+  }
+
+  getProfessors() {
+    this.professorService.get().subscribe(
+      result => this.professors = result
+    )
   }
 
 }
