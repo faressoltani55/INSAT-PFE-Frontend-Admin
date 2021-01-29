@@ -1,1 +1,95 @@
-<p>read-students works!</p>
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Etudiants</h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class=" text-primary">
+            <th>
+              Nom
+            </th>
+            <th>
+              Prénom
+            </th>
+            <th>
+              Num d'inscription
+            </th>
+            <th>
+              Filière / Classe
+            </th>
+            </thead>
+            <tbody>
+            <tr *ngFor="let student of students">
+              <td>
+                {{student.lastName}}
+              </td>
+              <td>
+                {{student.firstName}}
+              </td>
+              <td>
+                {{student.studentNumber}}
+              </td>
+              <td>
+                {{student.major + " "+student.level}}
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Ajouter une liste d'étudiants</h4>
+      </div>
+      <div class="card-body">
+        <div class="container row">
+          <div class="form-group uploader">
+            <label for="file" class="rounded-pill p-2 label">Upload via XLS file <i class="close nc-icon nc-cloud-upload-94"></i></label>
+            <input type="file" id="file" class="form-control-file" (change)="handleFileInput($event)">
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table">
+            <thead class=" text-primary">
+            <th>
+              Nom
+            </th>
+            <th>
+              Prénom
+            </th>
+            <th>
+              Num d'inscription
+            </th>
+            <th>
+              Filière / Classe
+            </th>
+            </thead>
+            <tbody>
+            <tr *ngFor="let student of uploadedStudents">
+              <td>
+                {{student.lastName}}
+              </td>
+              <td>
+                {{student.firstName}}
+              </td>
+              <td>
+                {{student.studentNumber}}
+              </td>
+              <td>
+                {{student.major + " " + student.level}}
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <button type="button" class="btn btn-primary btn-round" [hidden]="hidden" (click)="upload()">Upload</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
