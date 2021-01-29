@@ -1,7 +1,7 @@
 export class Student {
     id: string;
-    firstname: string;
-    lastname: string;
+    firstName: string;
+    lastName: string;
     email: string;
     password: string;
     CIN: number;
@@ -10,4 +10,5 @@ export class Student {
     role: string;
     studentNumber: string;
     major: string;
+    diploma: string;
   }

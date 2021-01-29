@@ -1,18 +1,23 @@
+import { SubjectStatus } from "../enums/subject-status";
+import { SubjectType } from "../enums/subject-type";
 import { Entreprise } from "./Entreprise";
 import { Professor } from "./Professor";
 import { Student } from "./Student";
 import { Supervisor } from "./Supervisor";
 
 export class Subject {
+  _id: string;
   subjectNumber: string;
   title: string;
-  type: string;
+  type: SubjectType;
   description: string;
   duration: number;
   categories: string[];
   student: Student;
   entreprise: Entreprise;
-  superviser: Supervisor;
+  supervisor: Supervisor;
   professor: Professor;
-  report: string
+  report: string;
+  status: SubjectStatus;
+  administrationNotice: string;
 }

@@ -1,1 +1,19 @@
-<p>requests-listing works!</p>
+<table class="table">
+    <thead class="text-primary text-center">
+    <th> N° Sujet</th>
+    <th> N° Inscription</th>
+    <th> Filière</th>
+    <th> Type</th>
+    <th class="text-center">Détails</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of pendingSubjects">
+      <td>{{item.subjectNumber}}</td>
+      <td>{{item.student.studentNumber}}</td>
+      <td>{{item.student.major}}</td>
+      <td>{{item.type}}</td>
+      <td class="text-center" (click)="pfeDetails(item._id)"><button class="btn btn-primary btn-round">Détails</button></td>
+    </tr>
+    </tbody>
+  </table>
+  
