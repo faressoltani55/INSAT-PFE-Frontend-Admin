@@ -21,6 +21,7 @@ export class SuccessComponent implements OnInit {
     this.signinService.setExternalWindow(window);
     this.route.queryParams.subscribe(params => {
       this.token = params['token'];
+      console.log(this.token);
       this.signinService.saveToken(this.token);
       this.signinService.destroyWindow();
     });

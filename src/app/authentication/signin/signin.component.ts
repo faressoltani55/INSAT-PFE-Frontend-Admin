@@ -42,8 +42,8 @@ export class SigninComponent implements OnInit, OnDestroy {
     this.loading = true;
     console.log('login');
     this.userService.login(this.username, this.password).subscribe(data => {
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('refresh', data.refresh);
+      localStorage.setItem('token', data.accessToken);
+      localStorage.setItem('refresh', data.refreshToken);
       this.loading = false;
     }, error => {
       console.log(error);
@@ -54,7 +54,7 @@ export class SigninComponent implements OnInit, OnDestroy {
 
   loginWithMicrosoft(): void {
     this.loading = true;
-    const externalWindow = window.open('http://localhost:3000/auth', 'auth', 'width=600,height=700,left=200,top=200', true);
+    const externalWindow = window.open('http://localhost:3000/auth/microsoft', 'auth', 'width=600,height=700,left=200,top=200', true);
     this.signinService.setExternalWindow(externalWindow);
     window.addEventListener('storage', this.storageEventListener.bind(this));
   }
