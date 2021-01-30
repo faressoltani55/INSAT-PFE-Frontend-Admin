@@ -12,8 +12,16 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {PagesModule} from './pages/pages.module';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {JwtModule, JwtModuleOptions} from '@auth0/angular-jwt';
 
-
+const JWT_Module_Options: JwtModuleOptions = {
+  config: {
+    tokenGetter: () => {
+      return localStorage.getItem('token');
+    },
+    allowedDomains: ['localhost:3000'],
+  }
+};
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,8 +36,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FontAwesomeModule,
     AuthenticationModule,
     BrowserAnimationsModule,
-    PagesModule
-],
+    PagesModule,
+    JwtModule.forRoot(JWT_Module_Options)
+  ],
 
   providers: [
   ],

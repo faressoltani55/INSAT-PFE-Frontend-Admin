@@ -13,6 +13,8 @@
       <td class="text-center" >{{item.subjectNumber}}</td>
       <td class="text-center" *ngIf="item.student">{{item.student.studentNumber}}</td>
       <td class="text-center" *ngIf="item.student">{{item.student.major}}</td>
+      <td *ngIf="!item.student"></td>
+      <td *ngIf="!item.student"></td>
       <td class="text-center" >{{item.type}}</td>
       <td class="text-center" (click)="pfeDetails(item._id)"><button class="btn btn-primary btn-round">Détails</button></td>
     </tr>
