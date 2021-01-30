@@ -187,9 +187,11 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label>Dans ce cas, la justification est obligatoire:</label>
-                  <textarea id="refusalReason" name="refusalReason" class="form-control textarea" placeholder="Explicitez les raisons de refus ici" minlength="100" required [(ngModel)]="refusalReason" refusalReason="ngModel"></textarea>
+                  <textarea id="refusal" name="refusal"
+                            class="form-control textarea" placeholder="Explicitez les raisons de refus ici"
+                            minlength="100" required [(ngModel)]="refusalReason"   #refusal="ngModel"></textarea>
                 </div>
-                <div *ngIf="refusalReason?.touched" class="alert alert-danger alert-dismissible fade show">
+                <div *ngIf="refusal.invalid && (refusal.dirty || refusal.touched)" class="alert alert-danger alert-dismissible fade show">
                   <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
                     <i class="nc-icon nc-simple-remove"></i>
                   </button>

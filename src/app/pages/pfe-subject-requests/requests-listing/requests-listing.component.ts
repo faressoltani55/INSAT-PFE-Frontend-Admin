@@ -11,7 +11,7 @@ import { Subject } from 'src/app/utils/models/Subject';
 })
 export class RequestsListingComponent implements OnInit {
 
-  pendingSubjects : Subject[]
+  pendingSubjects: Subject[];
   constructor(private sujetsService: SujetsService, private router: Router, private route: ActivatedRoute) { }
   loading = false;
 
@@ -29,6 +29,6 @@ export class RequestsListingComponent implements OnInit {
   }
 
   pfeDetails(id): void {
-    this.router.navigate([id], { relativeTo: this.route });
+    this.router.navigateByUrl('/pfe-subject-requests/' + id);
   }
 }

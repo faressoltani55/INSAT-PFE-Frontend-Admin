@@ -8,7 +8,8 @@ const routes: Routes = [{
     path: '',
     component: PfeSubjectRequestsComponent,
     children: [
-    { path: 'propositions-pfe/:id', component: SubjectRequestCardComponent},
+      { path: '', component: RequestsListingComponent},
+      { path: ':id', component: SubjectRequestCardComponent},
     ]
 }];
 

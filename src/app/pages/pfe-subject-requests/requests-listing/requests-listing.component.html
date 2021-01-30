@@ -9,11 +9,10 @@
     <tbody>
     <tr *ngFor="let item of pendingSubjects">
       <td>{{item.subjectNumber}}</td>
-      <td>{{item.student.studentNumber}}</td>
-      <td>{{item.student.major}}</td>
+      <td *ngIf="item.student">{{item.student.studentNumber}}</td>
+      <td *ngIf="item.student">{{item.student.major}}</td>
       <td>{{item.type}}</td>
       <td class="text-center" (click)="pfeDetails(item._id)"><button class="btn btn-primary btn-round">Détails</button></td>
     </tr>
     </tbody>
   </table>
-  

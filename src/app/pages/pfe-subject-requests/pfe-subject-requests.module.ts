@@ -5,14 +5,18 @@ import { PfeSubjectRequestsRoutingModule } from './pfe-subject-requests-routing.
 import { FormsModule } from '@angular/forms';
 import { SubjectRequestCardComponent } from './subject-request-card/subject-request-card.component';
 import { RequestsListingComponent } from './requests-listing/requests-listing.component';
+import {PfeSubjectRequestsComponent} from './pfe-subject-requests.component';
 
 @NgModule({
-  declarations: [SubjectRequestCardComponent, RequestsListingComponent],
+  declarations: [SubjectRequestCardComponent,
+    RequestsListingComponent,
+    PfeSubjectRequestsComponent
+  ],
 
   imports: [
     CommonModule,
     FormsModule,
-    PfeSubjectRequestsRoutingModule
+    PfeSubjectRequestsRoutingModule,
   ]
 })
 export class PfeSubjectRequestsModule { }
