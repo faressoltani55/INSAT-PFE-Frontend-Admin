@@ -1,1 +1,32 @@
-<p>add-soutenance works!</p>
+<div class="col-md-12">
+  <div class="card card-user">
+    <div class="card-header">
+      <h5 class="card-title">Create new acedemic year</h5>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="formGroup" (ngSubmit)="submitAddSoutenance()">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Soutenance date and time</label>
+              <input type="datetime-local" class="form-control" placeholder="Name" formControlName="dateTime">
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Room</label>
+              <select class="form-select form-control" formControlName="room">
+                <option *ngFor="let room of rooms" value="{{room}}">{{room}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="update ml-auto mr-auto">
+            <button type="submit" class="btn btn-primary btn-round">Create</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

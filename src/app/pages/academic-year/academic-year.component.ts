@@ -11,5 +11,4 @@ export class AcademicYearComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

@@ -5,10 +5,11 @@ import { StudentsRoutingModule } from './students-routing.module';
 import { AddStudentComponent } from './add-student/add-student.component';
 import { StudentsListingComponent } from './students-listing/students-listing.component';
 import { ReadStudentsComponent } from './read-students/read-students.component';
+import {StudentsComponent} from "./students.component";
 
 
 @NgModule({
-  declarations: [AddStudentComponent, StudentsListingComponent, ReadStudentsComponent],
+  declarations: [StudentsComponent, AddStudentComponent, StudentsListingComponent, ReadStudentsComponent],
   imports: [
     CommonModule,
     StudentsRoutingModule

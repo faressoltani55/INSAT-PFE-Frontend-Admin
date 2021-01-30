@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./students.component.css']
 })
 export class StudentsComponent implements OnInit {
-
+  func =["List Students", "Edit Student"]
+  i = 0
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  switch() {
+    this.i = (this.i + 1) % 2
+  }
 }
