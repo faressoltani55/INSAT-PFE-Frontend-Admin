@@ -2,7 +2,7 @@ import { Subject } from './Subject';
 export class Soutenance {
     public room: Room;
     public dateTime: Date;
-    public subject: Subject
+    public subjectPfe: Subject;
 }
 
 enum Room{

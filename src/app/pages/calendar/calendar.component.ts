@@ -15,8 +15,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CalendarComponent implements OnInit {
 
-  soutenances: Array<Soutenance>;
-  events: [{title: string, date: Date}];
+  soutenances: Array<Soutenance> = [];
+  events: Array<any> = [];
   calendarOptions: CalendarOptions;
   @ViewChild('fullcalendar') fullcalendar: FullCalendarComponent;
 
@@ -27,33 +27,31 @@ export class CalendarComponent implements OnInit {
 
     forwardRef(() => Calendar);
 
-    this.calendarService.getSoutenances().subscribe( data =>{
-      this.soutenances.push(data);
-    });
-
-    if(this.soutenances.length){
+    this.calendarService.getSoutenances().subscribe( data => {
+      this.soutenances.push.apply(this.soutenances, data);
       for (let i = 0; i < this.soutenances.length; i++) {
         let newEvent = {
-          title: this.soutenances[i].subject.title,
-          date: this.soutenances[i].dateTime
+          title: this.soutenances[i].subjectPfe.title,
+          date: new Date(this.soutenances[i].dateTime).toISOString().slice(0, 10)
         };
         this.events.push(newEvent);
       }
-    }
+      this.calendarOptions = {
+        // plugins: [dayGridPlugin, timeGrigPlugin, interactionPlugin],
+        initialView: 'dayGridMonth',
+        editable: true,
+        dateClick: this.handleDateClick.bind(this),
+        events: this.events,
+        headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        },
+      };
+    });
 
 
-    this.calendarOptions = {
-      // plugins: [dayGridPlugin, timeGrigPlugin, interactionPlugin],
-      initialView: 'dayGridMonth',
-      editable: true,
-      dateClick: this.handleDateClick.bind(this),
-      events: this.events,
-      headerToolbar: {
-        left: 'prev,next today',
-        center: 'title',
-        right: "dayGridMonth,timeGridWeek,timeGridDay"
-      },
-    };
+
   }
 
   
