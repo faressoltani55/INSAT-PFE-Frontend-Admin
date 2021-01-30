@@ -14,8 +14,8 @@ export const ROUTES: RouteInfo[] = [
     { path: '/pfe-subject-requests', title: 'PFE Requests',    icon:'nc-bullet-list-67',   class: '' },
     { path: '/search',               title: 'Search',          icon:'nc-zoom-split',       class: '' },
     { path: '/academic-year',        title: 'Year Management', icon:'nc-book-bookmark',    class: '' },
-    { path: '/professors/listing',           title: 'Professors',      icon:'nc-briefcase-24',        class: '' },
-    { path: '/students',             title: 'Students',        icon:'nc-hat-3',        class: '' },
+    { path: '/professors/listing',   title: 'Professors',      icon:'nc-briefcase-24',     class: '' },
+    { path: '/students/listing',     title: 'Students',        icon:'nc-hat-3',            class: '' },
     { path: '/profile',              title: 'Profile',         icon:'nc-single-02',        class: '' }
 ];
 

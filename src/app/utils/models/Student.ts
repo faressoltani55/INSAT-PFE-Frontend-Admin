@@ -1,14 +1,21 @@
-export class Student {
-    id: string;
-    firstName: string;
-    lastName: string;
-    email: string;
-    password: string;
-    CIN: number;
-    nationality: string;
-    phoneNumber: string;
-    role: string;
-    studentNumber: string;
-    major: string;
-    diploma: string;
-  }
+export interface Student {
+  id: string,
+  firstName: string,
+  lastName: string,
+  username: string,
+  email: string,
+  password: string,
+  CIN: number,
+  nationality: string,
+  phoneNumber: string,
+  role: string,
+  studentNumber: string,
+  major: string,
+  level: number,
+  diploma: string,
+  birthDate: Date,
+  birthPlace: string,
+  photo: string,
+  CV: string,
+  active: boolean
+}

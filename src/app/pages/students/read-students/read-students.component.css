@@ -1,0 +1,13 @@
+.uploader {
+  font-size: 2vh;
+}
+
+.label {
+  color: white;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: coral;
+}
+
+.label:hover {
+  background-color: cyan;
+}
