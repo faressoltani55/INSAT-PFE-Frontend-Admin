@@ -20,6 +20,9 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   declarations: [
     CalendarComponent,
   ],
+  exports: [
+    CalendarComponent
+  ],
   imports: [
     CommonModule,
     CalendarRoutingModule,

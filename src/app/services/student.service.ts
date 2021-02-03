@@ -12,23 +12,23 @@ export class StudentService {
   constructor(private http: HttpClient) { }
 
   get() {
-    return this.http.get<Student[]>(BASE_URL+URI)
+    return this.http.get<Student[]>(BASE_URL + URI);
   }
 
   add(Student: Student) {
-    return this.http.post<Student>(BASE_URL+URI, Student)
+    return this.http.post<Student>(BASE_URL + URI, Student);
   }
 
   addMany(Students: Student[]) {
-    return this.http.post<Student[]>(BASE_URL+URI+"all", Students)
+    return this.http.post<Student[]>(BASE_URL + URI + "all", Students);
   }
 
 
   update(Student) {
-    return this.http.put<Student>(BASE_URL+URI+Student._id, Student)
+    return this.http.put<Student>(BASE_URL + URI + Student._id, Student);
   }
 
   delete(id: string) {
-    return this.http.delete(BASE_URL+URI+id)
+    return this.http.delete(BASE_URL + URI + id);
   }
 }

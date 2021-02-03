@@ -1,4 +1,166 @@
 <div class="row">
+  <div class="col-lg-8 col-12">
+    <div class="card card-stats">
+      <div class="card-body py-3">
+        <app-calendar></app-calendar>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="col-12" routerLink="/pfe-subject-requests" style="cursor: pointer">
+      <div class="card card-stats">
+        <div class="card-body ">
+          <div class="row">
+            <div class="col-4 col-md-3">
+              <div class="icon-big text-center icon-warning">
+                <i class="nc-icon nc-globe text-warning"></i>
+              </div>
+            </div>
+            <div class="col-8 col-md-9">
+              <div class="numbers">
+                <p class="card-category">Ouvrir</p>
+                <p class="card-title" style="font-size: 20px">Les sujets
+                <p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer ">
+          <hr>
+          <div class="stats">
+            <i class="fa fa-refresh"></i> Clickez içi
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12" routerLink="/professors/listing" style="cursor: pointer">
+      <div class="card card-stats">
+        <div class="card-body ">
+          <div class="row">
+            <div class="col-4 col-md-3">
+              <div class="icon-big text-center icon-warning">
+                <i class="nc-icon nc-money-coins text-success"></i>
+              </div>
+            </div>
+            <div class="col-8 col-md-9">
+              <div class="numbers">
+                <p class="card-category">Ouvrir</p>
+                <p class="card-title" style="font-size: 20px">Les professeurs
+                <p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer ">
+          <hr>
+          <div class="stats">
+            <i class="fa fa-calendar-o"></i> Clickez ici
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12" routerLink="/academic-year" style="cursor: pointer">
+      <div class="card card-stats">
+        <div class="card-body ">
+          <div class="row">
+            <div class="col-4 col-md-3">
+              <div class="icon-big text-center icon-warning">
+                <i class="nc-icon nc-vector text-danger"></i>
+              </div>
+            </div>
+            <div class="col-8 col-md-9">
+              <div class="numbers">
+                <p class="card-category">Ouvrir</p>
+                <p class="card-title" style="font-size: 20px"> Year Management
+                <p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer ">
+          <hr>
+          <div class="stats">
+            <i class="fa fa-clock-o"></i> Clickez içi
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12" routerLink="/students/listing" style="cursor: pointer">
+      <div class="card card-stats">
+        <div class="card-body ">
+          <div class="row">
+            <div class="col-4 col-md-3">
+              <div class="icon-big text-center icon-warning">
+                <i class="nc-icon nc-favourite-28 text-primary"></i>
+              </div>
+            </div>
+            <div class="col-8 col-md-9">
+              <div class="numbers">
+                <p class="card-category">Ouvrir</p>
+                <p class="card-title" style="font-size: 20px">Les etudiants
+                <p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer ">
+          <hr>
+          <div class="stats">
+            <i class="fa fa-refresh"></i> Clickez içi
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-md-4">
+    <div class="card ">
+      <div class="card-header ">
+        <h5 class="card-title">Departements Statistics</h5>
+        <p class="card-category">Voir les statistiques du Professeurs</p>
+      </div>
+      <div class="card-body ">
+        <canvas id="chartEmail"></canvas>
+      </div>
+      <div class="card-footer ">
+        <div class="legend" *ngIf="departments">
+          <i class="fa fa-circle text-primary"></i> {{departments[0].department}}
+          <i class="fa fa-circle text-warning"></i> {{departments[1].department}}
+          <i class="fa fa-circle text-danger"></i> {{departments[2].department}}
+          <i class="fa fa-circle text-gray"></i> {{departments[3].department}}
+        </div>
+        <hr>
+        <div class="stats">
+          <i class="fa fa-calendar"></i> Les professeurs selon leurs departmenets
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card ">
+      <div class="card-header ">
+        <h5 class="card-title">Sujets Statistics</h5>
+        <p class="card-category">Voir les statistiques du Sujets</p>
+      </div>
+      <div class="card-body ">
+        <canvas id="chartSubjects"></canvas>
+      </div>
+      <div class="card-footer ">
+        <div class="legend">
+          <i class="fa fa-circle text-primary"></i> Accepted
+          <i class="fa fa-circle text-warning"></i> Pending
+          <i class="fa fa-circle text-danger"></i> Refused
+        </div>
+        <hr>
+        <div class="stats">
+          <i class="fa fa-calendar"></i> Les Sujets selon leurs status
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <div class="col-lg-3 col-md-6 col-sm-6">
     <div class="card card-stats">
       <div class="card-body ">
@@ -124,29 +286,29 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-md-4">
-    <div class="card ">
-      <div class="card-header ">
-        <h5 class="card-title">Email Statistics</h5>
-        <p class="card-category">Last Campaign Performance</p>
-      </div>
-      <div class="card-body ">
-        <canvas id="chartEmail"></canvas>
-      </div>
-      <div class="card-footer ">
-        <div class="legend">
-          <i class="fa fa-circle text-primary"></i> Opened
-          <i class="fa fa-circle text-warning"></i> Read
-          <i class="fa fa-circle text-danger"></i> Deleted
-          <i class="fa fa-circle text-gray"></i> Unopened
-        </div>
-        <hr>
-        <div class="stats">
-          <i class="fa fa-calendar"></i> Number of emails sent
-        </div>
-      </div>
-    </div>
-  </div>
+<!--  <div class="col-md-4">-->
+<!--    <div class="card ">-->
+<!--      <div class="card-header ">-->
+<!--        <h5 class="card-title">Email Statistics</h5>-->
+<!--        <p class="card-category">Last Campaign Performance</p>-->
+<!--      </div>-->
+<!--      <div class="card-body ">-->
+<!--        <canvas id="chartEmail"></canvas>-->
+<!--      </div>-->
+<!--      <div class="card-footer ">-->
+<!--        <div class="legend">-->
+<!--          <i class="fa fa-circle text-primary"></i> Opened-->
+<!--          <i class="fa fa-circle text-warning"></i> Read-->
+<!--          <i class="fa fa-circle text-danger"></i> Deleted-->
+<!--          <i class="fa fa-circle text-gray"></i> Unopened-->
+<!--        </div>-->
+<!--        <hr>-->
+<!--        <div class="stats">-->
+<!--          <i class="fa fa-calendar"></i> Number of emails sent-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
   <div class="col-md-8">
     <div class="card card-chart">
       <div class="card-header">
