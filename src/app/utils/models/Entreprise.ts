@@ -5,4 +5,3 @@ export class Entreprise {
     country: string;
     website: string;
   }
-  
