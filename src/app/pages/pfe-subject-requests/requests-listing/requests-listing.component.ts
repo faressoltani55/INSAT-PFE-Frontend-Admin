@@ -30,6 +30,6 @@ export class RequestsListingComponent implements OnInit {
   }
 
   pfeDetails(id): void {
-    this.router.navigateByUrl('/pfe-subject-requests/' + id);
+    this.router.navigateByUrl('/propositions-pfe/' + id);
   }
 }

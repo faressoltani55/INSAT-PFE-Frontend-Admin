@@ -98,7 +98,7 @@
           </div>
           <div class="col-md-6 pl-1">
             <div class="form-group">
-              <label for="duration">Durée</label>
+              <label for="duration">Durée (mois)</label>
               <input type="text" class="form-control" disabled="" [(ngModel)]='pendingSubject.duration' #duration>
             </div>
           </div>
@@ -155,19 +155,70 @@
       </div>
         <div class="row">
           <div class="update ml-auto mr-auto">
-            <button (click)="acceptRequest()" class="btn btn-primary btn-round">Accepter</button>
-            <button type="button" class="btn btn-danger btn-round" data-toggle="modal" data-target="#exampleModal">Refuser</button>
+            <button type="button" class="btn btn-primary btn-round"  data-toggle="modal" data-target="#acceptanceModal">Accepter</button>
+            <button type="button" class="btn btn-danger btn-round" data-toggle="modal" data-target="#refusalModal">Refuser</button>
           </div>
         </div>
     </div>
   </div>
 </div>
+
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="acceptanceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Confirmation du refus de la proposition</h5>
+        <h5 class="modal-title text-center" id="exampleModalLabel">L'acceptation du sujet nécessite l'affectation d'un encadreur</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Annuler">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form #form="ngForm" (ngSubmit)="acceptRequest()" validate>
+      <div class="modal-body">
+        <div class="card-body">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <span>Veuillez affecter un encadreur à ce sujet: </span>
+                  <select name="selectedProfessorEmail" id="selectedProfessorEmail" [(ngModel)]="selectedProfessor" #selectedProfessorEmail="ngModel" required>
+                    <option *ngFor="let professor of possibleProfessors" [ngValue]="professor" >{{professor.firstName}} {{professor.lastName}}</option>
+                  </select>
+                  <div *ngIf="selectedProfessorEmail.invalid && (refusal.dirty || refusal.touched) " class="alert alert-danger alert-dismissible fade show">
+                    <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+                      <i class="nc-icon nc-simple-remove"></i>
+                    </button>
+                      <span>Le choix d'un encadrant est obligatoire</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Avez-vous des remarques à propos de cette proposition?</label>
+                  <textarea id="notice" name="notice" 
+                            class="form-control textarea" placeholder="Vos remarques..."
+                            [(ngModel)]="notice"></textarea>
+                </div>
+              </div>
+            </div>      
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-round" data-dismiss="modal">Annuler</button>
+        <button type="submit" [disabled]="!form.valid" class="btn btn-danger btn-round">Confirmer</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="refusalModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="exampleModalLabel">Confirmation du refus de la proposition</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Annuler">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -189,7 +240,7 @@
                   <label>Dans ce cas, la justification est obligatoire:</label>
                   <textarea id="refusal" name="refusal"
                             class="form-control textarea" placeholder="Explicitez les raisons de refus ici"
-                            minlength="100" required [(ngModel)]="refusalReason"   #refusal="ngModel"></textarea>
+                            minlength="100" required [(ngModel)]="notice"   #refusal="ngModel"></textarea>
                 </div>
                 <div *ngIf="refusal.invalid && (refusal.dirty || refusal.touched)" class="alert alert-danger alert-dismissible fade show">
                   <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
@@ -201,7 +252,7 @@
             </div>      
         </div>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer ">
         <button type="button" class="btn btn-secondary btn-round" data-dismiss="modal">Annuler</button>
         <button type="submit" [disabled]="!form.valid" class="btn btn-danger btn-round">Confirmer le refus</button>
       </div>

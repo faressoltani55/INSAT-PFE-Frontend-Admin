@@ -24,11 +24,8 @@ export class SujetsService {
     return this.http.get(Utils.baseUrl + '/pfe/' + id ) as Observable<Subject>;
   }
 
-  public updateSujetStatus(id: string, status: SubjectStatus): Observable<SubjectStatus> {
-    return this.http.patch(Utils.baseUrl + '/pfe/' + id, {status: status}) as Observable<SubjectStatus>;
+  public updateSujet(id: string, updatedFields): Observable<SubjectStatus> {
+    return this.http.put(Utils.baseUrl + '/pfe/' + id, updatedFields) as Observable<SubjectStatus>;
   }
 
-  public updateSujetAdministrationNotice(id: string, notice: string) {
-    return this.http.patch(Utils.baseUrl + '/pfe/' + id + '/notice', {administrationNotice: notice});
-  }
 }
