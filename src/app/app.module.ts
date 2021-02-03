@@ -12,7 +12,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {PagesModule} from './pages/pages.module';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {SocketIoConfig, SocketIoModule} from 'ngx-socket-io';
 
+const configSocket: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FontAwesomeModule,
     AuthenticationModule,
     BrowserAnimationsModule,
-    PagesModule
+    PagesModule,
+    SocketIoModule.forRoot(configSocket)
 ],
 
   providers: [

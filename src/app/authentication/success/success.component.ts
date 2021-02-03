@@ -11,8 +11,7 @@ export class SuccessComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private signinService: SigninService,
-    private router: Router,
+    private signinService: SigninService
   ) { }
 
   token;
@@ -20,8 +19,9 @@ export class SuccessComponent implements OnInit {
   ngOnInit(): void {
     this.signinService.setExternalWindow(window);
     this.route.queryParams.subscribe(params => {
-      this.token = params['token'];
-      this.signinService.saveToken(this.token);
+      this.token = params.token;
+      console.log(this.token);
+      this.signinService.saveToken(params.token);
       this.signinService.destroyWindow();
     });
   }

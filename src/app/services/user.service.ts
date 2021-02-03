@@ -12,7 +12,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   public login(username: string, password: string): Observable<LoginResponse> {
-    return this.http.post(Utils.baseUrl + '/auth', {
+    return this.http.post(Utils.baseUrl + '/auth/local', {
       username: username,
       password: password,
     }, ) as Observable<LoginResponse>;
