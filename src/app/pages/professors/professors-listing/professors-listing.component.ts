@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ProfessorService} from "../../../services/professor.service";
+import { ProfessorsService } from 'src/app/services/professors.service';
 
 @Component({
   selector: 'app-professors-listing',
@@ -9,14 +9,14 @@ import {ProfessorService} from "../../../services/professor.service";
 export class ProfessorsListingComponent implements OnInit {
   professors = [];
 
-  constructor(private professorService: ProfessorService) { }
+  constructor(private professorsService: ProfessorsService) { }
 
   ngOnInit(): void {
     this.getProfessors();
   }
 
   getProfessors() {
-    this.professorService.get().subscribe(
+    this.professorsService.get().subscribe(
       result => this.professors = result
     )
   }

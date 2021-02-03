@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as XLSX from 'xlsx';
-import {ProfessorService} from "../../../services/professor.service";
 import {ToastrService} from "ngx-toastr";
+import { ProfessorsService } from 'src/app/services/professors.service';
 
 @Component({
   selector: 'app-read-professors',
@@ -14,7 +14,7 @@ export class ReadProfessorsComponent implements OnInit {
   professors = [];
   uploadedProfessors = []
   hidden = true;
-  constructor(private professorService: ProfessorService, private toastr: ToastrService) { }
+  constructor(private professorService: ProfessorsService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.getProfessors()

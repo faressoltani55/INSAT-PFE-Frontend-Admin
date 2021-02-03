@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SujetsService } from 'src/app/services/sujets.service';
 import { Subject } from 'src/app/utils/models/Subject';
 import { SubjectStatus } from 'src/app/utils/enums/subject-status';
+import { Professor } from 'src/app/utils/models/Professor';
+import { ProfessorsService } from 'src/app/services/professors.service';
+import { MajorEnum } from 'src/app/utils/enums/Major';
+import { DepartmentEnum } from 'src/app/utils/enums/Department';
 
 @Component({
   selector: 'app-subject-request-card',
@@ -12,29 +16,57 @@ import { SubjectStatus } from 'src/app/utils/enums/subject-status';
 export class SubjectRequestCardComponent implements OnInit {
 
   pendingSubject: Subject;
-  refusalReason;
-  loading = false;
+  possibleProfessors: Professor[];
+  selectedProfessor: Professor
+  notice: string;
 
-  constructor(private route: ActivatedRoute, private sujetsService: SujetsService) { }
+  constructor(private route: ActivatedRoute, private sujetsService: SujetsService, private professorsService: ProfessorsService, private router: Router) { }
 
   ngOnInit(): void {
+  
   this.sujetsService.getSujetById(this.route.snapshot.paramMap.get("id")).subscribe((data) => {
+    
     this.pendingSubject = data;
-    this.loading = false;
-  });}
+    console.log(data)
+    this.professorsService.getProfessorsByDepartment(this.getResponsibleDepartment()).subscribe((data) => {
+      this.possibleProfessors = data
+    });
+  });
+  }
 
   acceptRequest(){
-    this.sujetsService.updateSujetStatus(this.pendingSubject._id, SubjectStatus.ACCEPTED).subscribe((data) => {
-    });
+    this.sujetsService.updateSujet(this.pendingSubject._id, { 'professor': this.selectedProfessor, 'status' : SubjectStatus.ACCEPTED, 'administrationNotice': this.notice}).subscribe((data) => {
+    });;
+    this.redirect();
   }
 
   refuseRequest(){
-    this.sujetsService.updateSujetStatus(this.pendingSubject._id, SubjectStatus.REFUSED).subscribe((data) => {
-    });
-    this.sujetsService.updateSujetAdministrationNotice(this.pendingSubject._id, this.refusalReason).subscribe((data) => {
-    });
+    this.sujetsService.updateSujet(this.pendingSubject._id, { 'status' : SubjectStatus.REFUSED, 'administrationNotice': this.notice}).subscribe((data) => {
+    });; 
+    this.redirect();
   }
 
-  assignProfessor(){
+  redirect(){
+    this.router.navigate(['/propositions-pfe'])
+  }
+
+  public getResponsibleDepartment() {
+    switch(this.pendingSubject.student.major) { 
+      case MajorEnum.GL:
+      case MajorEnum.RT:
+        return DepartmentEnum.MI
+        break;
+      case MajorEnum.IIA:
+      case MajorEnum.IMI:
+        return DepartmentEnum.PI
+        break;
+      case MajorEnum.CH:
+      case MajorEnum.BIO:
+          return DepartmentEnum.CB
+          break;
+      default:
+          return null
+          break;
+        } 
   }
 }

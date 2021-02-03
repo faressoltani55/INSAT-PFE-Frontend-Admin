@@ -1,4 +1,6 @@
 
+import { DepartmentEnum } from "../enums/Department";
+import { MajorEnum } from "../enums/Major";
 import { SubjectStatus } from "../enums/subject-status";
 import { SubjectType } from "../enums/subject-type";
 import { Entreprise } from "./Entreprise";
@@ -21,4 +23,5 @@ export class Subject {
   report: string;
   status: SubjectStatus;
   administrationNotice: string;
+
 }

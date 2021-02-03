@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Professor} from "../../../utils/models/Professor";
-import {ProfessorService} from "../../../services/professor.service";
 import {ToastrService} from "ngx-toastr";
+import { ProfessorsService } from 'src/app/services/professors.service';
 
 @Component({
   selector: 'app-add-professor',
@@ -34,7 +34,7 @@ export class AddProfessorComponent implements OnInit {
   hidden = true;
   hidden2 = true;
   toDelete : any;
-  constructor(private professorService: ProfessorService, private toastr: ToastrService) { }
+  constructor(private professorsService: ProfessorsService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.getProfessors();
@@ -60,7 +60,7 @@ export class AddProfessorComponent implements OnInit {
   }
 
   getProfessors() {
-    this.professorService.get().subscribe(
+    this.professorsService.get().subscribe(
       result => this.professors = result
     )
   }
@@ -68,7 +68,7 @@ export class AddProfessorComponent implements OnInit {
   add() {
     if(this.prof.id === ""){
       this.prof.password = "azerty123"
-      this.professorService.add(this.prof).subscribe(
+      this.professorsService.add(this.prof).subscribe(
         result => {
           this.showNotification("Professeur Ajouté avec succées !")
           this.getProfessors()
@@ -77,7 +77,7 @@ export class AddProfessorComponent implements OnInit {
       )
     }
     else
-      this.professorService.update(this.prof).subscribe(
+      this.professorsService.update(this.prof).subscribe(
         result => {
           this.showNotification("Professeur Modifié avec succées !")
           this.getProfessors()
@@ -110,7 +110,7 @@ export class AddProfessorComponent implements OnInit {
   }
 
   delete() {
-    this.professorService.delete(this.toDelete._id).subscribe(
+    this.professorsService.delete(this.toDelete._id).subscribe(
       result => {
         this.getProfessors()
         this.hidden2 = true
