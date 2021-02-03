@@ -13,7 +13,7 @@ export class UserService {
 
   public login(username: string, password: string): Observable<LoginResponse> {
     return this.http.post(Utils.baseUrl + '/auth/local', {
-      username: username,
+      email: username,
       password: password,
     }, ) as Observable<LoginResponse>;
   }
@@ -30,7 +30,7 @@ export class UserService {
 }
 
 class LoginResponse {
-  public token: string;
-  public refresh: string;
+  public accessToken: string;
+  public refreshToken: string;
 }
 

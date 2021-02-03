@@ -21,7 +21,6 @@ export class ProfessorsComponent implements OnInit {
     if (value) {
       this.router.navigate(["professors/"+value]);
     }
-    return false;
   }
 
 }

@@ -10,6 +10,7 @@ import { SoutenancesListingComponent } from './soutenances-listing/soutenances-l
 import {AcademicYearComponent} from './academic-year.component';
 import { YearComponent } from './year/year.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import {ReactiveFormsModule} from '@angular/forms';
   imports: [
     CommonModule,
     AcademicYearRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ]
 })
 export class AcademicYearModule { }

@@ -2,7 +2,6 @@
   <div class="row card-header m-3">
     <div class="update ml-auto mr-auto col-12">
       <select class="custom-select form-control" (change)="navigateTo($event)">
-        <option value="listing">--Choisir--</option>
         <option *ngFor="let route of routes; let j=index" [value]="route">{{func[j]}}</option>
       </select>
     </div>

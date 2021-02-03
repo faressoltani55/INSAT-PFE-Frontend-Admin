@@ -42,9 +42,10 @@ export class SigninComponent implements OnInit, OnDestroy {
     this.loading = true;
     console.log('login');
     this.userService.login(this.username, this.password).subscribe(data => {
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('refresh', data.refresh);
+      localStorage.setItem('token', data.accessToken);
+      localStorage.setItem('refresh', data.refreshToken);
       this.loading = false;
+      this.router.navigateByUrl('/home');
     }, error => {
       console.log(error);
       this.loading = false;

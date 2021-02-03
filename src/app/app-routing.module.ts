@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { RequestsListingComponent } from './pages/pfe-subject-requests/requests-listing/requests-listing.component';
+import { SubjectRequestCardComponent } from './pages/pfe-subject-requests/subject-request-card/subject-request-card.component';
 
 const routes: Routes = [
   {

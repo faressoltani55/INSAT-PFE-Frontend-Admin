@@ -1,1 +1,27 @@
-<p>requests-listing works!</p>
+<div class="card">
+  <h4 class="text-center">Propoistions des sujets en attente</h4>
+  <table class="table">
+    <thead class="text-primary text-center">
+    <th> N° Sujet</th>
+    <th> N° Inscription</th>
+    <th> Filière</th>
+    <th> Type</th>
+    <th class="text-center">Détails</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of pendingSubjects | paginate: { itemsPerPage: 5, currentPage: p }">
+      <td class="text-center" >{{item.subjectNumber}}</td>
+      <td class="text-center" *ngIf="item.student">{{item.student.studentNumber}}</td>
+      <td class="text-center" *ngIf="item.student">{{item.student.major}}</td>
+      <td *ngIf="!item.student"></td>
+      <td *ngIf="!item.student"></td>
+      <td class="text-center" >{{item.type}}</td>
+      <td class="text-center" (click)="pfeDetails(item._id)"><button class="btn btn-primary btn-round">Détails</button></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="text-center mt-1">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>

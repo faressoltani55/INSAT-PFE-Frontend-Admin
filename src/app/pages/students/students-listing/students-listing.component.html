@@ -1,1 +1,70 @@
-<p>students-listing works!</p>
+<div class="col-md-12">
+  <div class="card">
+    <div class="card-header">
+      <h4 class="card-title"> Liste des étudiants</h4>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table">
+          <thead class=" text-primary">
+          <th>
+            Nom
+          </th>
+          <th>
+            Prenom
+          </th>
+          <th>
+            Num d'inscription
+          </th>
+          <th>
+            Filière
+          </th>
+          <th>
+            Classe
+          </th>
+          <th>
+            Diplôme
+          </th>
+          <th>
+            Email
+          </th>
+          <th>
+            GSM
+          </th>
+          </thead>
+          <tbody>
+          <tr *ngFor="let student of students | paginate: { itemsPerPage: 5, currentPage: p }">
+            <td>
+              {{student.lastName}}
+            </td>
+            <td>
+              {{student.firstName}}
+            </td>
+            <td>
+              {{student.studentNumber}}
+            </td>
+            <td>
+              {{student.major}}
+            </td>
+            <td>
+              {{student.level}}
+            </td>
+            <td>
+              {{student.diploma}}
+            </td>
+            <td>
+              {{student.email}}
+            </td>
+            <td>
+              {{student.phoneNumber}}
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <div class="text-center mt-1">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

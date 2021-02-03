@@ -13,8 +13,18 @@ import {PagesModule} from './pages/pages.module';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {SocketIoConfig, SocketIoModule} from 'ngx-socket-io';
+import {JwtModule, JwtModuleOptions} from '@auth0/angular-jwt';
 
 const configSocket: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
+
+const JWT_Module_Options: JwtModuleOptions = {
+  config: {
+    tokenGetter: () => {
+      return localStorage.getItem('token');
+    },
+    allowedDomains: ['localhost:3000'],
+  }
+};
 
 @NgModule({
   declarations: [
@@ -31,6 +41,7 @@ const configSocket: SocketIoConfig = { url: 'http://localhost:3000', options: {}
     AuthenticationModule,
     BrowserAnimationsModule,
     PagesModule,
+    JwtModule.forRoot(JWT_Module_Options),
     SocketIoModule.forRoot(configSocket)
 ],
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-students',
@@ -6,14 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./students.component.css']
 })
 export class StudentsComponent implements OnInit {
-  func =["List Students", "Edit Student"]
-  i = 0
-  constructor() { }
+  func =["Lister les étudiants", "Modifier/ Ajouter un étudiant", "Uploader via un fichier XLS"]
+  routes =["listing", "add", "read"]
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  switch() {
-    this.i = (this.i + 1) % 2
+  navigateTo(event) {
+    let value = event.target.value
+    if (value) {
+      this.router.navigate(["students/"+value]);
+    }
   }
 }

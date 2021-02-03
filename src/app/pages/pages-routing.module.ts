@@ -36,7 +36,7 @@ const routes: Routes = [
         loadChildren: () => import('./../pages/academic-year/academic-year.module').then(mod => mod.AcademicYearModule)
       },
       {
-        path: 'pfe-subject-requests',
+        path: 'propositions-pfe',
         canActivate: [AuthGuard],
         loadChildren: () => import('./../pages/pfe-subject-requests/pfe-subject-requests.module').then(mod => mod.PfeSubjectRequestsModule)
       },
