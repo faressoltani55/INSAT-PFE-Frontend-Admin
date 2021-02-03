@@ -8,6 +8,7 @@ import { ProfessorsService } from 'src/app/services/professors.service';
 import { MajorEnum } from 'src/app/utils/enums/Major';
 import { DepartmentEnum } from 'src/app/utils/enums/Department';
 
+declare var $: any;
 @Component({
   selector: 'app-subject-request-card',
   templateUrl: './subject-request-card.component.html',
@@ -36,13 +37,15 @@ export class SubjectRequestCardComponent implements OnInit {
 
   acceptRequest(){
     this.sujetsService.updateSujet(this.pendingSubject._id, { 'professor': this.selectedProfessor, 'status' : SubjectStatus.ACCEPTED, 'administrationNotice': this.notice}).subscribe((data) => {
-    });;
+    });
+    $('#affectation').modal('hide');
     this.redirect();
   }
 
-  refuseRequest(){
+  refuseRequest() {
     this.sujetsService.updateSujet(this.pendingSubject._id, { 'status' : SubjectStatus.REFUSED, 'administrationNotice': this.notice}).subscribe((data) => {
-    });; 
+    });
+    $('#confirmation').modal('hide');
     this.redirect();
   }
 

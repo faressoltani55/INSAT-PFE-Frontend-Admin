@@ -12,7 +12,7 @@ import {SpinnerModule} from '../../components/spinner/spinner.module';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    CalendarModule
+    CalendarModule,
     SpinnerModule
   ]
 })
