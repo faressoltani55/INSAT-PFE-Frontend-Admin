@@ -1,1 +1,24 @@
-<p>etudiants works!</p>
+<table class="table">
+  <thead class=" text-primary">
+  <th> Prénom</th>
+  <th> Nom</th>
+  <th> Email</th>
+  <th> Diplome</th>
+  <th> Numero de telephone</th>
+  <th> Carte Etudiant</th>
+  <th> CIN</th>
+  <th class="text-right">Filière</th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of students">
+    <td>{{item.firstName}}</td>
+    <td>{{item.lastName}}</td>
+    <td>{{item.email}}</td>
+    <td>{{item.diploma}}</td>
+    <td>{{item.phoneNumber}}</td>
+    <td>{{item.studentNumber}}</td>
+    <td>{{item.CIN}}</td>
+    <td class="text-right">{{item.major}}</td>
+  </tr>
+  </tbody>
+</table>
