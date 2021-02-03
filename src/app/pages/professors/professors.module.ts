@@ -6,6 +6,7 @@ import { ReadProfessorsComponent } from './read-professors/read-professors.compo
 import {ProfessorsRoutingModule} from "./professors-routing.module";
 import {ProfessorsComponent} from "./professors.component";
 import {FormsModule} from "@angular/forms";
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -15,10 +16,11 @@ import {FormsModule} from "@angular/forms";
     ReadProfessorsComponent,
     ProfessorsComponent
   ],
-    imports: [
-        CommonModule,
-        ProfessorsRoutingModule,
-        FormsModule
-    ]
+  imports: [
+    CommonModule,
+    ProfessorsRoutingModule,
+    FormsModule,
+    NgxPaginationModule
+  ]
 })
 export class ProfessorsModule { }

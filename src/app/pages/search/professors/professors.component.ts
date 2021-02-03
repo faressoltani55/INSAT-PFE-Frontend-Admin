@@ -13,6 +13,7 @@ export class ProfessorsComponent implements OnInit {
 
   professors: Professor[];
   loading = false;
+  p: number = 1;
 
   ngOnInit(): void {
     this.getProfessors();

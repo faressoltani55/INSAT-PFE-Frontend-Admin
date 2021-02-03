@@ -7,13 +7,15 @@ import { ProfessorsComponent } from './professors/professors.component';
 import { EtudiantsComponent } from './etudiants/etudiants.component';
 import { SoutenancesComponent } from './soutenances/soutenances.component';
 import { SujetsComponent } from './sujets/sujets.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
   declarations: [SearchComponent, ProfessorsComponent, EtudiantsComponent, SoutenancesComponent, SujetsComponent],
   imports: [
     CommonModule,
-    SearchRoutingModule
+    SearchRoutingModule,
+    NgxPaginationModule
   ]
 })
 export class SearchModule { }
