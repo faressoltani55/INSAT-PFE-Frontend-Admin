@@ -14,6 +14,7 @@ export class SessionsListingComponent implements OnInit {
   yearId: string;
   year: Year;
   sessionsList: any[];
+  p: number = 1;
 
   constructor(private activatedRoute: ActivatedRoute,
               private yearService: YearService) {

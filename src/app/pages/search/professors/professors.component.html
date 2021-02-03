@@ -8,7 +8,7 @@
   <th class="text-right">Role</th>
   </thead>
   <tbody>
-  <tr *ngFor="let item of professors">
+  <tr *ngFor="let item of professors | paginate: { itemsPerPage: 5, currentPage: p }">
     <td>{{item.professorId}}</td>
     <td>{{item.firstName}} {{item.lastName}}</td>
     <td>{{item.email}}</td>
@@ -18,3 +18,6 @@
   </tr>
   </tbody>
 </table>
+<div class="text-center mt-1">
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
