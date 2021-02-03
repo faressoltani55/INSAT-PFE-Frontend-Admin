@@ -3,6 +3,9 @@ export class Soutenance {
     public room: Room;
     public dateTime: Date;
     public subjectPfe: Subject;
+    public president: string[];
+    public session; string;
+    public dateString: string;
 }
 
 enum Room{
