@@ -14,6 +14,7 @@ export class RequestsListingComponent implements OnInit {
   pendingSubjects: Subject[];
   constructor(private sujetsService: SujetsService, private router: Router, private route: ActivatedRoute) { }
   loading = false;
+  p: number = 1;
 
   ngOnInit(): void {
     this.getPendingSubjects();

@@ -29,7 +29,7 @@
               </th>
               </thead>
               <tbody>
-              <tr *ngFor="let soutenance of soutenancesList">
+              <tr *ngFor="let soutenance of soutenancesList | paginate: { itemsPerPage: 5, currentPage: p }">
                 <td>
                   {{soutenance.dateTime.split('T')[0]}}
                 </td>
@@ -42,6 +42,9 @@
               </tr>
               </tbody>
             </table>
+            <div class="text-center mt-1">
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
           </div>
         </div>
       </div>

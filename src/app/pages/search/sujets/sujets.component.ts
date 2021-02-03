@@ -13,6 +13,7 @@ export class SujetsComponent implements OnInit {
 
   sujets: Subject[];
   loading = false;
+  p: number = 1;
 
   ngOnInit(): void {
     this.getSubjects();

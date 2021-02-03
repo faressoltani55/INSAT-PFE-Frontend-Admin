@@ -8,6 +8,7 @@ import {ProfessorService} from "../../../services/professor.service";
 })
 export class ProfessorsListingComponent implements OnInit {
   professors = [];
+  p: number = 1;
 
   constructor(private professorService: ProfessorService) { }
 

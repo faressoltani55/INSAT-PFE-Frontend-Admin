@@ -13,6 +13,7 @@ export class SoutenancesListingComponent implements OnInit {
 
   sessionId: string;
   soutenancesList: any[];
+  p: number = 1;
 
   constructor(private activatedRoute: ActivatedRoute,
               private yearService: YearService) {
