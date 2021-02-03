@@ -13,6 +13,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {JwtModule, JwtModuleOptions} from '@auth0/angular-jwt';
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import {SpinnerModule} from './components/spinner/spinner.module';
 
 const JWT_Module_Options: JwtModuleOptions = {
   config: {
@@ -38,10 +40,12 @@ const JWT_Module_Options: JwtModuleOptions = {
     BrowserAnimationsModule,
     PagesModule,
     NgxPaginationModule,
+    SpinnerModule,
     JwtModule.forRoot(JWT_Module_Options)
   ],
 
-  providers: [
+  providers: [],
+  exports: [
   ],
   bootstrap: [AppComponent]
 })
