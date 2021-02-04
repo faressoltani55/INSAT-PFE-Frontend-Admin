@@ -169,7 +169,8 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title text-center" id="affectation">L'acceptation du sujet nécessite l'affectation d'un encadreur</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Annuler">
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Annuler" #closeAcceptanceModal>
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -196,12 +197,14 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label>Avez-vous des remarques à propos de cette proposition?</label>
-                  <textarea id="notice" name="notice"
+
+                  <textarea id="notice" name="notice" 
                             class="form-control textarea" placeholder="Vos remarques..."
                             [(ngModel)]="notice"></textarea>
                 </div>
               </div>
-            </div>
+
+            </div>      
         </div>
       </div>
       <div class="modal-footer">
@@ -219,14 +222,15 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title text-center" id="confirmation">Confirmation du refus de la proposition</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Annuler">
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Annuler" #closeRefusalModal>
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form #form="ngForm" (ngSubmit)="refuseRequest()" >
+      <form #form="ngForm" (ngSubmit)="refuseRequest()" validate>
       <div class="modal-body">
         <div class="card-body">
-
+          
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
@@ -240,7 +244,8 @@
                   <label>Dans ce cas, la justification est obligatoire:</label>
                   <textarea id="refusal" name="refusal"
                             class="form-control textarea" placeholder="Explicitez les raisons de refus ici"
-                            minlength="10" required [(ngModel)]="notice"   #refusal="ngModel"></textarea>
+
+                            minlength="100" required [(ngModel)]="notice"   #refusal="ngModel"></textarea>
                 </div>
                 <div *ngIf="refusal.invalid && (refusal.dirty || refusal.touched)" class="alert alert-danger alert-dismissible fade show">
                   <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
@@ -249,7 +254,7 @@
                     <span>Ce champ est obligatoire</span>
                 </div>
               </div>
-            </div>
+            </div>      
         </div>
       </div>
       <div class="modal-footer ">

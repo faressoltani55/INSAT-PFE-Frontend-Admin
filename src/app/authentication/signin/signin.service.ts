@@ -13,8 +13,7 @@ export class SigninService {
 
 
 
-  constructor(public jwtHelper: JwtHelperService) {
-  }
+  constructor(public jwtHelper: JwtHelperService) {}
 
   public isAuthenticated(): boolean {
     const token = localStorage.getItem('token');

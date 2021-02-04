@@ -5,7 +5,6 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
 import {AuthenticationModule} from './authentication/authentication.module';
 import {FormsModule} from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -16,6 +15,11 @@ import {SocketIoConfig, SocketIoModule} from 'ngx-socket-io';
 import {JwtModule, JwtModuleOptions} from '@auth0/angular-jwt';
 
 const configSocket: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
+
+import {JwtModule, JwtModuleOptions} from '@auth0/angular-jwt';
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import {SpinnerModule} from './components/spinner/spinner.module';
 
 const JWT_Module_Options: JwtModuleOptions = {
   config: {
@@ -43,9 +47,12 @@ const JWT_Module_Options: JwtModuleOptions = {
     PagesModule,
     SocketIoModule.forRoot(configSocket),
     JwtModule.forRoot(JWT_Module_Options)
-],
+    NgxPaginationModule,
+    SpinnerModule,
+  ],
 
-  providers: [
+  providers: [],
+  exports: [
   ],
   bootstrap: [AppComponent]
 })

@@ -8,27 +8,33 @@ import { ProfessorsService } from 'src/app/services/professors.service';
 import { MajorEnum } from 'src/app/utils/enums/Major';
 import { DepartmentEnum } from 'src/app/utils/enums/Department';
 import {SocketService} from '../../../services/socket.service';
+import { ViewChild, ElementRef} from '@angular/core';
 
 declare var $: any;
+
+
 @Component({
   selector: 'app-subject-request-card',
   templateUrl: './subject-request-card.component.html',
   styleUrls: ['./subject-request-card.component.css']
 })
+
 export class SubjectRequestCardComponent implements OnInit {
+  
+  @ViewChild('closeAcceptanceModal') closeAcceptanceModal: ElementRef;
+  @ViewChild('closeRefusalModal') closeRefusalModal: ElementRef;
 
   pendingSubject: Subject;
   possibleProfessors: Professor[];
-  selectedProfessor: Professor;
+  selectedProfessor: Professor
   notice: string;
 
-  constructor(private route: ActivatedRoute, private sujetsService: SujetsService, private professorsService: ProfessorsService, private router: Router,
-              private socketService: SocketService) { }
+  constructor(private route: ActivatedRoute, private sujetsService: SujetsService, private professorsService: ProfessorsService, private router: Router,  private socketService: SocketService) { }
 
   ngOnInit(): void {
-
+  
   this.sujetsService.getSujetById(this.route.snapshot.paramMap.get("id")).subscribe((data) => {
-
+    
     this.pendingSubject = data;
     console.log(data)
     this.professorsService.getProfessorsByDepartment(this.getResponsibleDepartment()).subscribe((data) => {
@@ -41,7 +47,7 @@ export class SubjectRequestCardComponent implements OnInit {
     this.sujetsService.updateSujet(this.pendingSubject._id, { 'professor': this.selectedProfessor, 'status' : SubjectStatus.ACCEPTED, 'administrationNotice': this.notice}).subscribe((data) => {
     });
     this.socketService.sendAcceptedNotif(this.notice);
-    $('#affectation').modal('hide');
+    this.closeAcceptanceModal.nativeElement.click();
     this.redirect();
   }
 
@@ -49,7 +55,7 @@ export class SubjectRequestCardComponent implements OnInit {
     this.sujetsService.updateSujet(this.pendingSubject._id, { 'status' : SubjectStatus.REFUSED, 'administrationNotice': this.notice}).subscribe((data) => {
     });
     this.socketService.sendRefusedNotif(this.notice);
-    $('#confirmation').modal('hide');
+    this.closeRefusalModal.nativeElement.click();
     this.redirect();
   }
 
@@ -58,7 +64,7 @@ export class SubjectRequestCardComponent implements OnInit {
   }
 
   public getResponsibleDepartment() {
-    switch(this.pendingSubject.student.major) {
+    switch(this.pendingSubject.student.major) { 
       case MajorEnum.GL:
       case MajorEnum.RT:
         return DepartmentEnum.MI
@@ -74,6 +80,6 @@ export class SubjectRequestCardComponent implements OnInit {
       default:
           return null
           break;
-        }
+        } 
   }
 }

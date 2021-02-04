@@ -11,9 +11,10 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  public login(username: string, password: string): Observable<LoginResponse> {
+
+  public login(email: string, password: string): Observable<LoginResponse> {
     return this.http.post(Utils.baseUrl + '/auth/local', {
-      email: username,
+      email: email,
       password: password,
     }, ) as Observable<LoginResponse>;
   }

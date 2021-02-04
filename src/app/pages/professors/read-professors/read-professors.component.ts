@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as XLSX from 'xlsx';
 import {ToastrService} from "ngx-toastr";
 import { ProfessorsService } from 'src/app/services/professors.service';
+import {Professor} from "../../../utils/models/Professor";
 
 @Component({
   selector: 'app-read-professors',
@@ -39,8 +40,25 @@ export class ReadProfessorsComponent implements OnInit {
       let workbook = XLSX.read(bstr, {type:"binary"});
       let first_sheet_name = workbook.SheetNames[0];
       let worksheet = workbook.Sheets[first_sheet_name];
-      this.uploadedProfessors = XLSX.utils.sheet_to_json(worksheet,{raw:true});
-      console.log(this.uploadedProfessors)
+      let uploaded : any = XLSX.utils.sheet_to_json(worksheet,{raw:true});
+      for(let prof of uploaded) {
+        let professor : Professor = {
+          id : "",
+          firstName: prof.firstName,
+          lastName: prof.lastName,
+          username: prof.username,
+          email: prof.email,
+          password: "12345678",
+          CIN: prof.CIN,
+          nationality: prof.nationality,
+          phoneNumber: prof.phoneNumber,
+          role: "PROFESSOR",
+          professorId: prof.professorId,
+          department: prof.department,
+          title: prof.title
+        };
+        this.uploadedProfessors.push(professor);
+      }
     }
     fileReader.readAsArrayBuffer(this.professorsFile);
   }

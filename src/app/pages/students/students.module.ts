@@ -11,7 +11,12 @@ import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
-  declarations: [StudentsComponent, AddStudentComponent, StudentsListingComponent, ReadStudentsComponent],
+  declarations: [
+    AddStudentComponent,
+    StudentsListingComponent,
+    ReadStudentsComponent,
+    StudentsComponent
+  ],
   imports: [
     CommonModule,
     StudentsRoutingModule,
