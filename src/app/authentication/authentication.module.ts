@@ -10,8 +10,6 @@ import {FormsModule} from '@angular/forms';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import { SuccessComponent } from './success/success.component';
 
-
-
 @NgModule({
   declarations: [
     SigninComponent,
@@ -25,7 +23,7 @@ import { SuccessComponent } from './success/success.component';
     HttpClientModule,
     AuthenticationRoutingModule,
     FormsModule,
-    FontAwesomeModule,
+    FontAwesomeModule
   ],
 })
 

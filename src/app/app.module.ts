@@ -41,8 +41,8 @@ const JWT_Module_Options: JwtModuleOptions = {
     AuthenticationModule,
     BrowserAnimationsModule,
     PagesModule,
-    JwtModule.forRoot(JWT_Module_Options),
-    SocketIoModule.forRoot(configSocket)
+    SocketIoModule.forRoot(configSocket),
+    JwtModule.forRoot(JWT_Module_Options)
 ],
 
   providers: [

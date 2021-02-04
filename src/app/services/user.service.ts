@@ -32,5 +32,6 @@ export class UserService {
 class LoginResponse {
   public accessToken: string;
   public refreshToken: string;
+  public user: any;
 }
 

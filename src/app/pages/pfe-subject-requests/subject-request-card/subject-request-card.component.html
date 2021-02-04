@@ -196,12 +196,12 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label>Avez-vous des remarques à propos de cette proposition?</label>
-                  <textarea id="notice" name="notice" 
+                  <textarea id="notice" name="notice"
                             class="form-control textarea" placeholder="Vos remarques..."
                             [(ngModel)]="notice"></textarea>
                 </div>
               </div>
-            </div>      
+            </div>
         </div>
       </div>
       <div class="modal-footer">
@@ -223,10 +223,10 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form #form="ngForm" (ngSubmit)="refuseRequest()" validate>
+      <form #form="ngForm" (ngSubmit)="refuseRequest()" >
       <div class="modal-body">
         <div class="card-body">
-          
+
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
@@ -240,7 +240,7 @@
                   <label>Dans ce cas, la justification est obligatoire:</label>
                   <textarea id="refusal" name="refusal"
                             class="form-control textarea" placeholder="Explicitez les raisons de refus ici"
-                            minlength="100" required [(ngModel)]="notice"   #refusal="ngModel"></textarea>
+                            minlength="10" required [(ngModel)]="notice"   #refusal="ngModel"></textarea>
                 </div>
                 <div *ngIf="refusal.invalid && (refusal.dirty || refusal.touched)" class="alert alert-danger alert-dismissible fade show">
                   <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
@@ -249,7 +249,7 @@
                     <span>Ce champ est obligatoire</span>
                 </div>
               </div>
-            </div>      
+            </div>
         </div>
       </div>
       <div class="modal-footer ">
