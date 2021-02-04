@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ToastrService} from "ngx-toastr";
 import * as XLSX from "xlsx";
+import {ToastrService} from "ngx-toastr";
 import {StudentService} from "../../../services/student.service";
+import {Student} from "../../../utils/models/Student";
+import {Professor} from "../../../utils/models/Professor";
 
 @Component({
   selector: 'app-read-students',
@@ -28,7 +30,7 @@ export class ReadStudentsComponent implements OnInit {
 
   handleFileInput(event) {
     this.studentsFile = event.target.files[0];
-    this.hidden= false;
+    this.hidden = false;
     let fileReader = new FileReader();
     fileReader.onload = (e) => {
       this.arrayBuffer = fileReader.result;
@@ -39,8 +41,32 @@ export class ReadStudentsComponent implements OnInit {
       let workbook = XLSX.read(bstr, {type:"binary"});
       let first_sheet_name = workbook.SheetNames[0];
       let worksheet = workbook.Sheets[first_sheet_name];
-      this.uploadedStudents = XLSX.utils.sheet_to_json(worksheet,{raw:true});
-      console.log(this.uploadedStudents)
+      let uploaded : any = XLSX.utils.sheet_to_json(worksheet,{raw:true});
+      for (let stu of uploaded) {
+        let bdate =  stu.birthDate.toString().split("/")
+        let student: Student = {
+          id: "",
+          firstName: stu.firstName,
+          lastName: stu.lastName,
+          username: stu.username,
+          email: stu.email,
+          password: "12345678",
+          CIN: stu.CIN,
+          nationality: stu.nationality,
+          phoneNumber: stu.phoneNumber,
+          role: "STUDENT",
+          studentNumber: stu.studentNumber,
+          major: stu.major,
+          level: stu.level,
+          diploma: stu.diploma,
+          birthDate: new Date(bdate[2]+"-"+bdate[1]+"-"+bdate[0]),
+          birthPlace: stu.birthPlace,
+          photo: "",
+          CV: "",
+          active: true
+        };
+        this.uploadedStudents.push(student);
+      }
     }
     fileReader.readAsArrayBuffer(this.studentsFile);
   }

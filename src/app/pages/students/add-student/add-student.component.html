@@ -70,13 +70,21 @@
             <div class="col-md-6 pr-1">
               <div class="form-group">
                 <label>Username</label>
-                <input type="text" class="form-control" name="username" placeholder="Username" [(ngModel)]="stud.username">
+                <input #username="ngModel" minlength="8" type="text" required class="form-control" name="username" placeholder="Username" [(ngModel)]="stud.username">
+                <div *ngIf="username.invalid && (username.dirty && username.touched)"
+                     class="alert alert-danger">
+                  Username invalide
+                </div>
               </div>
             </div>
             <div class="col-md-6 pl-1">
               <div class="form-group">
-                <label for="exampleInputEmail1">Email</label>
-                <input type="email" id="exampleInputEmail1" name="email" class="form-control" placeholder="Email" [(ngModel)]="stud.email">
+                <label for="email">Email</label>
+                <input #email="ngModel" minlength="22" type="email" required id="email" name="email" class="form-control" placeholder="Email" [(ngModel)]="stud.email">
+                <div *ngIf="email.invalid && (email.dirty && email.touched)"
+                     class="alert alert-danger">
+                  Email invalide
+                </div>
               </div>
             </div>
           </div>
@@ -84,13 +92,21 @@
             <div class="col-md-6 pr-1">
               <div class="form-group">
                 <label>Num d'inscription</label>
-                <input type="text" class="form-control" placeholder="ID" name="code" [(ngModel)]="stud.studentNumber">
+                <input #inscription="ngModel" minlength="7" maxlength="7" type="text" required class="form-control" placeholder="ID" name="code" [(ngModel)]="stud.studentNumber">
+                <div *ngIf="inscription.invalid && (inscription.dirty && inscription.touched)"
+                     class="alert alert-danger">
+                  Numéro d'inscription invalide
+                </div>
               </div>
             </div>
             <div class="col-md-6 pl-1">
               <div class="form-group">
                 <label>CIN</label>
-                <input type="text" class="form-control" placeholder="CIN" name="cin" [(ngModel)]="stud.CIN">
+                <input #cin="ngModel" minlength="8" maxlength="8" type="text" required class="form-control" placeholder="CIN" name="cin" [(ngModel)]="stud.CIN">
+                <div *ngIf="cin.invalid && (cin.dirty && cin.touched)"
+                     class="alert alert-danger">
+                  CIN invalide
+                </div>
               </div>
             </div>
           </div>
@@ -98,13 +114,21 @@
             <div class="col-md-6 pr-1">
               <div class="form-group">
                 <label>Nom</label>
-                <input type="text" class="form-control" placeholder="Last Name" name="lastname" [(ngModel)]="stud.lastName">
+                <input #name="ngModel" type="text" required class="form-control" placeholder="Last Name" name="lastname" [(ngModel)]="stud.lastName">
+                <div *ngIf="name.invalid && (name.dirty && name.touched)"
+                     class="alert alert-danger">
+                  Nom invalide
+                </div>
               </div>
             </div>
             <div class="col-md-6 pl-1">
               <div class="form-group">
                 <label>Prénom</label>
-                <input type="text" class="form-control" placeholder="First Name" name="firstname" [(ngModel)]="stud.firstName">
+                <input #firstName="ngModel" type="text" required class="form-control" placeholder="First Name" name="firstname" [(ngModel)]="stud.firstName">
+                <div *ngIf="firstName.invalid && (firstName.dirty && firstName.touched)"
+                     class="alert alert-danger">
+                  Prénom invalide
+                </div>
               </div>
             </div>
           </div>
@@ -112,7 +136,7 @@
             <div class="col-md-6 pr-1">
               <div class="form-group">
                 <label>Filière</label>
-                <select class="form-control custom-select" name="Major" [(ngModel)]="stud.major">
+                <select #major="ngModel" required class="form-control custom-select" name="Major" [(ngModel)]="stud.major">
                   <option value="GL">Génie Logiciel</option>
                   <option value="RT">Réseaux et Télécommunication</option>
                   <option value="IIA">Informatique Industrielle et Automatique</option>
@@ -120,15 +144,23 @@
                   <option value="CH">Chimie Industrielle</option>
                   <option value="BIO">Biologie Industrielle</option>
                 </select>
+                <div *ngIf="major.invalid && (major.dirty && major.touched)"
+                     class="alert alert-danger">
+                  Filière invalide
+                </div>
               </div>
             </div>
             <div class="col-md-6 pl-1">
               <div class="form-group">
                 <label>Diplôme</label>
-                <select class="form-control custom-select" name="Diploma" [(ngModel)]="stud.diploma">
-                  <option value="technician">Technicien</option>
-                  <option value="engineer">Ingénieur</option>
+                <select #diploma="ngModel" required class="form-control custom-select" name="Diploma" [(ngModel)]="stud.diploma">
+                  <option value="technicien">Technicien</option>
+                  <option value="ingénieur">Ingénieur</option>
                 </select>
+                <div *ngIf="diploma.invalid && (diploma.dirty && diploma.touched)"
+                     class="alert alert-danger">
+                  Filière invalide
+                </div>
               </div>
             </div>
           </div>
@@ -136,13 +168,24 @@
             <div class="col-md-6 pr-1">
               <div class="form-group">
                 <label>Classe</label>
-                <input type="number" class="form-control" placeholder="level" name="nationality" [(ngModel)]="stud.level">
+                <select #classe="ngModel" required class="form-control custom-select" name="level" [(ngModel)]="stud.level">
+                  <option value="3">3ème année</option>
+                  <option value="5">5ème année</option>
+                </select>
+                <div *ngIf="classe.invalid && (classe.dirty && classe.touched)"
+                     class="alert alert-danger">
+                  Classe invalide
+                </div>
               </div>
             </div>
             <div class="col-md-6 pl-1">
               <div class="form-group">
                 <label>Nationalité</label>
-                <input type="text" class="form-control" placeholder="Nationality" name="nationality" [(ngModel)]="stud.nationality">
+                <input #country="ngModel" required type="text" class="form-control" placeholder="Nationality" name="nationality" [(ngModel)]="stud.nationality">
+                <div *ngIf="country.invalid && (country.dirty && country.touched)"
+                     class="alert alert-danger">
+                  Nationalité invalide
+                </div>
               </div>
             </div>
           </div>
@@ -150,13 +193,21 @@
             <div class="col-md-6 pr-1">
               <div class="form-group">
                 <label>GSM</label>
-                <input type="text" class="form-control" placeholder="Phone Number" name="phone" [(ngModel)]="stud.phoneNumber">
+                <input #phone="ngModel" type="number" required class="form-control" placeholder="Phone Number" name="phone" [(ngModel)]="stud.phoneNumber">
+                <div *ngIf="phone.invalid && (phone.dirty && phone.touched)"
+                     class="alert alert-danger">
+                  GSM invalide
+                </div>
               </div>
             </div>
             <div class="col-md-6 pl-1">
               <div class="form-group">
                 <label>Lieu de naissance</label>
-                <input type="text" class="form-control" placeholder="Birth Place" name="bplace" [(ngModel)]="stud.birthPlace">
+                <input #bplace="ngModel" required type="text" class="form-control" placeholder="Birth Place" name="bplace" [(ngModel)]="stud.birthPlace">
+                <div *ngIf="bplace.invalid && (bplace.dirty && bplace.touched)"
+                     class="alert alert-danger">
+                  Lieu de naissance invalide
+                </div>
               </div>
             </div>
           </div>
@@ -164,7 +215,11 @@
             <div class="col-md-12 pr-1">
               <div class="form-group">
                 <label>Date de naissance</label>
-                <input type="date" class="form-control" placeholder="Birth Date" name="bday" [(ngModel)]="stud.birthDate">
+                <input #bdate="ngModel" required type="date" class="form-control" placeholder="Birth Date" name="bday" [(ngModel)]="stud.birthDate">
+                <div *ngIf="bdate.invalid && (bdate.dirty && bdate.touched)"
+                     class="alert alert-danger">
+                  Date de naissance invalide
+                </div>
               </div>
             </div>
           </div>
