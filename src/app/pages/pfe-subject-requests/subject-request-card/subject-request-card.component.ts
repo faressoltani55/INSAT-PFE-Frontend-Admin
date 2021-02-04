@@ -7,14 +7,19 @@ import { Professor } from 'src/app/utils/models/Professor';
 import { ProfessorsService } from 'src/app/services/professors.service';
 import { MajorEnum } from 'src/app/utils/enums/Major';
 import { DepartmentEnum } from 'src/app/utils/enums/Department';
+import { ViewChild, ElementRef} from '@angular/core';
 
-declare var $: any;
+
 @Component({
   selector: 'app-subject-request-card',
   templateUrl: './subject-request-card.component.html',
   styleUrls: ['./subject-request-card.component.css']
 })
+
 export class SubjectRequestCardComponent implements OnInit {
+  
+  @ViewChild('closeAcceptanceModal') closeAcceptanceModal: ElementRef;
+  @ViewChild('closeRefusalModal') closeRefusalModal: ElementRef;
 
   pendingSubject: Subject;
   possibleProfessors: Professor[];
@@ -38,14 +43,14 @@ export class SubjectRequestCardComponent implements OnInit {
   acceptRequest(){
     this.sujetsService.updateSujet(this.pendingSubject._id, { 'professor': this.selectedProfessor, 'status' : SubjectStatus.ACCEPTED, 'administrationNotice': this.notice}).subscribe((data) => {
     });
-    $('#affectation').modal('hide');
+    this.closeAcceptanceModal.nativeElement.click();
     this.redirect();
   }
 
   refuseRequest() {
     this.sujetsService.updateSujet(this.pendingSubject._id, { 'status' : SubjectStatus.REFUSED, 'administrationNotice': this.notice}).subscribe((data) => {
     });
-    $('#confirmation').modal('hide');
+    this.closeRefusalModal.nativeElement.click();
     this.redirect();
   }
 
