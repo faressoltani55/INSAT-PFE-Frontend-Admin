@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {SocketService} from '../../services/socket.service';
 
 @Component({
   selector: 'app-pfe-subject-requests',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PfeSubjectRequestsComponent implements OnInit {
 
-  constructor() { }
+  constructor(public socketService: SocketService) { }
 
   ngOnInit(): void {
   }

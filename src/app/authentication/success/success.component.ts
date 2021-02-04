@@ -11,8 +11,7 @@ export class SuccessComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private signinService: SigninService,
-    private router: Router,
+    private signinService: SigninService
   ) { }
 
   token;

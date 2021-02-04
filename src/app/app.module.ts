@@ -11,6 +11,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {PagesModule} from './pages/pages.module';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {SocketIoConfig, SocketIoModule} from 'ngx-socket-io';
+import {JwtModule, JwtModuleOptions} from '@auth0/angular-jwt';
+
+const configSocket: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
+
 import {JwtModule, JwtModuleOptions} from '@auth0/angular-jwt';
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { SpinnerComponent } from './components/spinner/spinner.component';
@@ -24,6 +29,7 @@ const JWT_Module_Options: JwtModuleOptions = {
     allowedDomains: ['localhost:3000'],
   }
 };
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,9 +45,10 @@ const JWT_Module_Options: JwtModuleOptions = {
     AuthenticationModule,
     BrowserAnimationsModule,
     PagesModule,
+    SocketIoModule.forRoot(configSocket),
+    JwtModule.forRoot(JWT_Module_Options)
     NgxPaginationModule,
     SpinnerModule,
-    JwtModule.forRoot(JWT_Module_Options)
   ],
 
   providers: [],

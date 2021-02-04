@@ -11,6 +11,7 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
+
   public login(email: string, password: string): Observable<LoginResponse> {
     return this.http.post(Utils.baseUrl + '/auth/local', {
       email: email,
@@ -32,5 +33,6 @@ export class UserService {
 class LoginResponse {
   public accessToken: string;
   public refreshToken: string;
+  public user: any;
 }
 
