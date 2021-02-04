@@ -34,7 +34,7 @@ export class YearService {
   }
 
   postSoutenance(soutenance: Soutenance): Observable<any> {
-    return this.http.post(`${environment.apiBase}/soutenances`, soutenance);
+    return this.http.post<Soutenance>(`${environment.apiBase}/soutenances`, soutenance);
   }
 
   postSession(session: Session): Observable<any> {

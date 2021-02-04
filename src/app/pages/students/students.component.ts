@@ -15,8 +15,7 @@ export class StudentsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  navigateTo(event) {
-    let value = event.target.value
+  navigateTo(value) {
     if (value) {
       this.router.navigate(["students/"+value]);
     }
