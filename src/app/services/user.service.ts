@@ -13,7 +13,7 @@ export class UserService {
 
 
   public login(email: string, password: string): Observable<LoginResponse> {
-    return this.http.post(Utils.baseUrl + '/auth/local', {
+    return this.http.post(Utils.baseUrl + '/auth/local/admin', {
       email: email,
       password: password,
     }, ) as Observable<LoginResponse>;

@@ -27,9 +27,4 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  submit(): void{
-    this.studentService.updateStudent(this.id, this.profile).subscribe();
-  }
-
-
 }
