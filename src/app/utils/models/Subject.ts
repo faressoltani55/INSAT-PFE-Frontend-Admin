@@ -20,6 +20,7 @@ export class Subject {
   entreprise: Entreprise;
   supervisor: Supervisor;
   professor: Professor;
+  professorRequested: boolean;
   report: string;
   status: SubjectStatus;
   administrationNotice: string;

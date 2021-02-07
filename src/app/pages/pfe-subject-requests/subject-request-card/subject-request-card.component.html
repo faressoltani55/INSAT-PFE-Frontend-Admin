@@ -180,7 +180,12 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
-                  <span>Veuillez affecter un encadreur à ce sujet: </span>
+                  <span *ngIf="!pendingSubject.professorRequested" class="text-danger">Veuillez affecter un encadreur à ce sujet: </span>
+                  <div *ngIf="pendingSubject.professorRequested">
+                    <span class="text-danger">Cet étudiant a envoyé une demande d'encadrement à: {{pendingSubject.professor.firstName}} {{pendingSubject.professor.lastName}}</span>
+                    <br>
+                    <span>Vous pouvez attendre la réponse du professeur en question ou bien affecter un autre:</span>
+                  </div>      
                   <select name="selectedProfessorEmail" id="selectedProfessorEmail" [(ngModel)]="selectedProfessor" #selectedProfessorEmail="ngModel" required>
                     <option *ngFor="let professor of possibleProfessors" [ngValue]="professor" >{{professor.firstName}} {{professor.lastName}}</option>
                   </select>
