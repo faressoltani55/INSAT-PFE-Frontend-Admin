@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {StudentService} from '../../services/student.service';
 import {Address} from '../../utils/models/Adress';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -11,13 +12,14 @@ export class ProfileComponent implements OnInit {
 
   profile: any;
 
-  id = '6014276c273a2a3f58be90a4';
+  id =  localStorage.getItem('user');
 
-  constructor(private studentService: StudentService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.studentService.getStudentById(this.id).subscribe( data => {
+    this.userService.getUser(this.id).subscribe( data => {
       this.profile = data;
+      console.log(this.profile);
       if (! this.profile.address){
         this.profile.address = new Address();
       }

@@ -19,8 +19,8 @@ export class UserService {
     }, ) as Observable<LoginResponse>;
   }
 
-  public getUser(): Observable<Admin> {
-    return this.http.get(Utils.baseUrl + '/admin') as Observable<Admin>;
+  public getUser(id): Observable<Admin> {
+    return this.http.get(Utils.baseUrl + '/admin/' + id) as Observable<Admin>;
   }
 
   public loginWithMicrosoft(): Observable<any> {
