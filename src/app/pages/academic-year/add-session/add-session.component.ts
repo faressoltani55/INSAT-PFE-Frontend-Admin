@@ -49,7 +49,7 @@ export class AddSessionComponent implements OnInit {
   submitAddSession(): void {
     const session = this.formGroup.value;
     console.log(session);
-    this.yearService.postYear(session).subscribe(
+    this.yearService.postSession(session).subscribe(
       (response: any) => {
         this.router.navigate(['/academic-year']);
       }, (err: any) => {
